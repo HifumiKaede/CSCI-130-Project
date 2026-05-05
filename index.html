@@ -22,6 +22,8 @@
             --text-light: #6b6b6b;
             --white: #ffffff;
             --cream: #faf8f5;
+            --rose-pink: #ffc0cb;
+            --rose-dark: #ff69b4;
         }
 
         * {
@@ -148,10 +150,10 @@
             transition: all 0.3s ease;
         }
 
-        /* Hero Section */
+        /* Hero Section with Blooming Roses */
         .hero {
             height: 100vh;
-            background: linear-gradient(135deg, var(--secondary-pink) 0%, var(--primary-pink) 100%);
+            background: linear-gradient(135deg, #fceef0 0%, #f4d4d4 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -160,21 +162,73 @@
             overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
+        /* Animated Roses */
+        .rose {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M50 10 L60 40 L90 40 L65 60 L75 90 L50 70 L25 90 L35 60 L10 40 L40 40 Z" fill="%23d4af37" opacity="0.05"/></svg>');
-            background-size: 200px;
-            opacity: 0.3;
+            width: 80px;
+            height: 80px;
+            animation: bloom 3s ease-out forwards;
+            opacity: 0;
+        }
+
+        .rose-1 { top: 10%; left: 15%; animation-delay: 0.5s; }
+        .rose-2 { top: 20%; right: 20%; animation-delay: 1s; width: 60px; height: 60px; }
+        .rose-3 { bottom: 25%; left: 10%; animation-delay: 1.5s; width: 70px; height: 70px; }
+        .rose-4 { bottom: 15%; right: 15%; animation-delay: 2s; }
+        .rose-5 { top: 40%; left: 5%; animation-delay: 0.8s; width: 50px; height: 50px; }
+        .rose-6 { top: 60%; right: 8%; animation-delay: 1.8s; width: 65px; height: 65px; }
+
+        @keyframes bloom {
+            0% {
+                transform: scale(0) rotate(-45deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 0.4;
+            }
+        }
+
+        /* Floating petals */
+        .petal {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(135deg, #ffc0cb, #ff69b4);
+            border-radius: 50% 0 50% 50%;
+            opacity: 0;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .petal-1 { top: -10%; left: 20%; animation-delay: 2.5s; }
+        .petal-2 { top: -10%; left: 50%; animation-delay: 3s; }
+        .petal-3 { top: -10%; left: 70%; animation-delay: 3.5s; }
+        .petal-4 { top: -10%; left: 35%; animation-delay: 4s; }
+        .petal-5 { top: -10%; left: 80%; animation-delay: 4.5s; }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
         }
 
         .hero-content {
             position: relative;
-            z-index: 1;
+            z-index: 10;
             max-width: 900px;
             padding: 2rem;
         }
@@ -184,6 +238,7 @@
             margin-bottom: 1.5rem;
             color: var(--text-dark);
             animation: fadeInUp 1s ease;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
         }
 
         .hero .tagline {
@@ -439,6 +494,11 @@
             .hero h1 {
                 font-size: 3rem;
             }
+
+            .rose {
+                width: 60px !important;
+                height: 60px !important;
+            }
         }
 
         @media (max-width: 768px) {
@@ -486,6 +546,11 @@
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
+
+            .rose {
+                width: 40px !important;
+                height: 40px !important;
+            }
         }
     </style>
 </head>
@@ -512,8 +577,82 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Blooming Roses -->
     <section class="hero">
+        <!-- Animated Roses (SVG) -->
+        <svg class="rose rose-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="8" fill="#ff69b4" opacity="0.9"/>
+            <circle cx="50" cy="50" r="15" fill="#ff69b4" opacity="0.7"/>
+            <circle cx="50" cy="50" r="22" fill="#ffc0cb" opacity="0.5"/>
+            <circle cx="50" cy="50" r="30" fill="#ffc0cb" opacity="0.3"/>
+            <ellipse cx="50" cy="35" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
+            <ellipse cx="50" cy="65" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
+            <ellipse cx="35" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
+            <ellipse cx="65" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
+        </svg>
+
+        <svg class="rose rose-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="8" fill="#ff69b4" opacity="0.9"/>
+            <circle cx="50" cy="50" r="15" fill="#ff69b4" opacity="0.7"/>
+            <circle cx="50" cy="50" r="22" fill="#ffc0cb" opacity="0.5"/>
+            <circle cx="50" cy="50" r="30" fill="#ffc0cb" opacity="0.3"/>
+            <ellipse cx="50" cy="35" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
+            <ellipse cx="50" cy="65" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
+            <ellipse cx="35" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
+            <ellipse cx="65" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
+        </svg>
+
+        <svg class="rose rose-3" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="8" fill="#ff69b4" opacity="0.9"/>
+            <circle cx="50" cy="50" r="15" fill="#ff69b4" opacity="0.7"/>
+            <circle cx="50" cy="50" r="22" fill="#ffc0cb" opacity="0.5"/>
+            <circle cx="50" cy="50" r="30" fill="#ffc0cb" opacity="0.3"/>
+            <ellipse cx="50" cy="35" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
+            <ellipse cx="50" cy="65" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
+            <ellipse cx="35" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
+            <ellipse cx="65" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
+        </svg>
+
+        <svg class="rose rose-4" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="8" fill="#ff69b4" opacity="0.9"/>
+            <circle cx="50" cy="50" r="15" fill="#ff69b4" opacity="0.7"/>
+            <circle cx="50" cy="50" r="22" fill="#ffc0cb" opacity="0.5"/>
+            <circle cx="50" cy="50" r="30" fill="#ffc0cb" opacity="0.3"/>
+            <ellipse cx="50" cy="35" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
+            <ellipse cx="50" cy="65" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
+            <ellipse cx="35" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
+            <ellipse cx="65" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
+        </svg>
+
+        <svg class="rose rose-5" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="8" fill="#ff69b4" opacity="0.9"/>
+            <circle cx="50" cy="50" r="15" fill="#ff69b4" opacity="0.7"/>
+            <circle cx="50" cy="50" r="22" fill="#ffc0cb" opacity="0.5"/>
+            <circle cx="50" cy="50" r="30" fill="#ffc0cb" opacity="0.3"/>
+            <ellipse cx="50" cy="35" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
+            <ellipse cx="50" cy="65" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
+            <ellipse cx="35" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
+            <ellipse cx="65" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
+        </svg>
+
+        <svg class="rose rose-6" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="8" fill="#ff69b4" opacity="0.9"/>
+            <circle cx="50" cy="50" r="15" fill="#ff69b4" opacity="0.7"/>
+            <circle cx="50" cy="50" r="22" fill="#ffc0cb" opacity="0.5"/>
+            <circle cx="50" cy="50" r="30" fill="#ffc0cb" opacity="0.3"/>
+            <ellipse cx="50" cy="35" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
+            <ellipse cx="50" cy="65" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
+            <ellipse cx="35" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
+            <ellipse cx="65" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
+        </svg>
+
+        <!-- Floating Petals -->
+        <div class="petal petal-1"></div>
+        <div class="petal petal-2"></div>
+        <div class="petal petal-3"></div>
+        <div class="petal petal-4"></div>
+        <div class="petal petal-5"></div>
+
         <div class="hero-content">
             <h1>Wedding Catering Services</h1>
             <p class="tagline">Not a fairy, but we'll make your dream wedding come into reality.</p>
