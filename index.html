@@ -759,6 +759,10 @@
 
     <!-- Hero Section with Blooming Roses -->
     <section class="hero">
+        <!-- Audio element - plays once when petals fall -->
+        <audio id="heroAudio" preload="auto">
+            <source src="RiceandVows_jingle.wav" type="audio/wav">
+        </audio>
         <!-- SEQUENCE 1: Corner Roses with Vines - Bloom FIRST (0s - 1.5s) -->
         
         <!-- Top Left Corner -->
@@ -1155,6 +1159,16 @@
 
     <!-- Scripts -->
     <script>
+        // Play audio when petals start falling (4.2s delay)
+        setTimeout(() => {
+            const audio = document.getElementById('heroAudio');
+            if (audio) {
+                audio.play().catch(err => {
+                    console.log('Audio autoplay prevented:', err);
+                });
+            }
+        }, 4200);
+
         // Mobile menu toggle
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
