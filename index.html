@@ -407,6 +407,18 @@
             }
         }
 
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Video Section */
         .video-section {
             padding: 6rem 2rem;
@@ -1004,7 +1016,7 @@
     </section>
 
    <!-- Promotional Video Section -->
-    <section class="video-section">
+    <section class="video-section reveal">
         <div class="video-container-wrapper">
             <h2>See Us in Action</h2>
             <p>Experience the magic of Rice and Vows through our carefully crafted culinary presentations and memorable celebrations.</p>
@@ -1022,7 +1034,7 @@
     </section>
 
     <!-- About Section -->
-    <section class="about-section">
+    <section class="about-section reveal">
         <div class="about-container">
             <div class="about-content">
                 <h2>Experience-Driven Excellence</h2>
@@ -1037,7 +1049,7 @@
     </section>
 
     <!-- Why Choose Us Section -->
-    <section class="why-choose">
+    <section class="why-choose reveal">
         <div class="why-choose-container">
             <h2>Why Choose Rice and Vows</h2>
             <div class="features-grid">
@@ -1093,7 +1105,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section">
+    <section class="cta-section reveal">
         <h2>Ready to Create Magic Together?</h2>
         <p>Let us turn your wedding dreams into a delicious reality. Schedule a consultation and menu tasting today.</p>
         <a href="contact.html" class="btn-primary" style="font-size: 1.1rem; padding: 1.2rem 3rem;">Schedule a Tasting</a>
@@ -1167,6 +1179,22 @@
                 navLinks.classList.remove('active');
             }
         });
+
+        // Reveal animations on scroll
+        const observerOptions = {
+            threshold: 0.15
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     </script>
 </body>
 </html>
