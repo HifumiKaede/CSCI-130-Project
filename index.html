@@ -24,6 +24,7 @@
             --cream: #faf8f5;
             --rose-pink: #ffc0cb;
             --rose-dark: #ff69b4;
+            --vine-green: #90a955;
         }
 
         * {
@@ -162,37 +163,109 @@
             overflow: hidden;
         }
 
-        /* Animated Roses */
-        .rose {
+        /* Corner Roses with Vines - Bloom FIRST */
+        .corner-rose {
             position: absolute;
-            width: 80px;
-            height: 80px;
-            animation: bloom 3s ease-out forwards;
+            width: 120px;
+            height: 120px;
             opacity: 0;
+            animation: bloomCorner 1.2s ease-out forwards;
         }
 
-        .rose-1 { top: 10%; left: 15%; animation-delay: 0.5s; }
-        .rose-2 { top: 20%; right: 20%; animation-delay: 1s; width: 60px; height: 60px; }
-        .rose-3 { bottom: 25%; left: 10%; animation-delay: 1.5s; width: 70px; height: 70px; }
-        .rose-4 { bottom: 15%; right: 15%; animation-delay: 2s; }
-        .rose-5 { top: 40%; left: 5%; animation-delay: 0.8s; width: 50px; height: 50px; }
-        .rose-6 { top: 60%; right: 8%; animation-delay: 1.8s; width: 65px; height: 65px; }
+        .corner-rose-top-left {
+            top: 5%;
+            left: 5%;
+            animation-delay: 0s;
+        }
 
-        @keyframes bloom {
+        .corner-rose-top-right {
+            top: 5%;
+            right: 5%;
+            animation-delay: 0.15s;
+        }
+
+        .corner-rose-bottom-left {
+            bottom: 5%;
+            left: 5%;
+            animation-delay: 0.3s;
+        }
+
+        .corner-rose-bottom-right {
+            bottom: 5%;
+            right: 5%;
+            animation-delay: 0.45s;
+        }
+
+        @keyframes bloomCorner {
             0% {
                 transform: scale(0) rotate(-45deg);
                 opacity: 0;
             }
-            50% {
-                opacity: 0.6;
+            60% {
+                opacity: 0.8;
             }
             100% {
                 transform: scale(1) rotate(0deg);
-                opacity: 0.4;
+                opacity: 0.7;
             }
         }
 
-        /* Floating petals */
+        /* Center Crown Rose - Blooms SECOND */
+        .crown-rose {
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            opacity: 0;
+            animation: bloomCrown 1s ease-out forwards;
+            animation-delay: 1.5s;
+            z-index: 5;
+        }
+
+        @keyframes bloomCrown {
+            0% {
+                transform: translateX(-50%) scale(0) rotate(-45deg);
+                opacity: 0;
+            }
+            60% {
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateX(-50%) scale(1) rotate(0deg);
+                opacity: 0.8;
+            }
+        }
+
+        /* Floating Accent Roses - Bloom THIRD */
+        .accent-rose {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            animation: bloomAccent 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .accent-rose-1 { top: 30%; left: 15%; animation-delay: 2.7s; }
+        .accent-rose-2 { top: 35%; right: 18%; animation-delay: 2.9s; width: 60px; height: 60px; }
+        .accent-rose-3 { bottom: 30%; left: 12%; animation-delay: 3.1s; width: 65px; height: 65px; }
+        .accent-rose-4 { bottom: 35%; right: 15%; animation-delay: 3.3s; }
+        .accent-rose-5 { top: 50%; left: 8%; animation-delay: 3.5s; width: 55px; height: 55px; }
+        .accent-rose-6 { top: 55%; right: 10%; animation-delay: 3.7s; width: 60px; height: 60px; }
+
+        @keyframes bloomAccent {
+            0% {
+                transform: scale(0) rotate(-30deg);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 0.5;
+            }
+        }
+
+        /* Floating Petals - Fall LAST */
         .petal {
             position: absolute;
             width: 12px;
@@ -200,14 +273,17 @@
             background: linear-gradient(135deg, #ffc0cb, #ff69b4);
             border-radius: 50% 0 50% 50%;
             opacity: 0;
-            animation: float 8s ease-in-out infinite;
+            animation: float 5s ease-in-out infinite;
         }
 
-        .petal-1 { top: -10%; left: 20%; animation-delay: 2.5s; }
-        .petal-2 { top: -10%; left: 50%; animation-delay: 3s; }
-        .petal-3 { top: -10%; left: 70%; animation-delay: 3.5s; }
-        .petal-4 { top: -10%; left: 35%; animation-delay: 4s; }
-        .petal-5 { top: -10%; left: 80%; animation-delay: 4.5s; }
+        .petal-1 { top: -10%; left: 20%; animation-delay: 4.2s; }
+        .petal-2 { top: -10%; left: 50%; animation-delay: 4.4s; }
+        .petal-3 { top: -10%; left: 70%; animation-delay: 4.6s; }
+        .petal-4 { top: -10%; left: 35%; animation-delay: 4.8s; }
+        .petal-5 { top: -10%; left: 80%; animation-delay: 5s; }
+        .petal-6 { top: -10%; left: 15%; animation-delay: 5.2s; }
+        .petal-7 { top: -10%; left: 60%; animation-delay: 5.4s; }
+        .petal-8 { top: -10%; left: 90%; animation-delay: 5.6s; }
 
         @keyframes float {
             0% {
@@ -215,10 +291,10 @@
                 opacity: 0;
             }
             10% {
-                opacity: 0.6;
+                opacity: 0.7;
             }
             90% {
-                opacity: 0.4;
+                opacity: 0.5;
             }
             100% {
                 transform: translateY(110vh) rotate(360deg);
@@ -231,6 +307,7 @@
             z-index: 10;
             max-width: 900px;
             padding: 2rem;
+            margin-top: 6rem;
         }
 
         .hero h1 {
@@ -238,6 +315,9 @@
             margin-bottom: 1.5rem;
             color: var(--text-dark);
             animation: fadeInUp 1s ease;
+            animation-delay: 2.5s;
+            opacity: 0;
+            animation-fill-mode: forwards;
             text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
         }
 
@@ -246,7 +326,10 @@
             color: var(--text-light);
             margin-bottom: 1rem;
             font-style: italic;
-            animation: fadeInUp 1s ease 0.2s backwards;
+            animation: fadeInUp 1s ease;
+            animation-delay: 2.7s;
+            opacity: 0;
+            animation-fill-mode: forwards;
         }
 
         .hero .subtitle {
@@ -254,7 +337,10 @@
             color: var(--text-dark);
             margin-bottom: 2.5rem;
             font-weight: 500;
-            animation: fadeInUp 1s ease 0.4s backwards;
+            animation: fadeInUp 1s ease;
+            animation-delay: 2.9s;
+            opacity: 0;
+            animation-fill-mode: forwards;
         }
 
         .hero-buttons {
@@ -262,7 +348,10 @@
             gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
-            animation: fadeInUp 1s ease 0.6s backwards;
+            animation: fadeInUp 1s ease;
+            animation-delay: 3.1s;
+            opacity: 0;
+            animation-fill-mode: forwards;
         }
 
         .btn-primary, .btn-secondary {
@@ -495,9 +584,19 @@
                 font-size: 3rem;
             }
 
-            .rose {
-                width: 60px !important;
-                height: 60px !important;
+            .corner-rose {
+                width: 90px !important;
+                height: 90px !important;
+            }
+
+            .crown-rose {
+                width: 75px !important;
+                height: 75px !important;
+            }
+
+            .accent-rose {
+                width: 55px !important;
+                height: 55px !important;
             }
         }
 
@@ -547,9 +646,19 @@
                 gap: 2rem;
             }
 
-            .rose {
-                width: 40px !important;
-                height: 40px !important;
+            .corner-rose {
+                width: 70px !important;
+                height: 70px !important;
+            }
+
+            .crown-rose {
+                width: 60px !important;
+                height: 60px !important;
+            }
+
+            .accent-rose {
+                width: 45px !important;
+                height: 45px !important;
             }
         }
     </style>
@@ -579,79 +688,164 @@
 
     <!-- Hero Section with Blooming Roses -->
     <section class="hero">
-        <!-- Animated Roses (SVG) -->
-        <svg class="rose rose-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <!-- SEQUENCE 1: Corner Roses with Vines - Bloom FIRST (0s - 1.5s) -->
+        <svg class="corner-rose corner-rose-top-left" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <!-- Vines -->
+            <path d="M 60 60 Q 30 40, 10 20" stroke="#90a955" stroke-width="2" fill="none" opacity="0.6"/>
+            <path d="M 60 60 Q 40 30, 20 10" stroke="#90a955" stroke-width="2" fill="none" opacity="0.6"/>
+            <!-- Leaves -->
+            <ellipse cx="35" cy="35" rx="8" ry="12" fill="#90a955" opacity="0.5" transform="rotate(-45 35 35)"/>
+            <ellipse cx="25" cy="25" rx="7" ry="10" fill="#90a955" opacity="0.5" transform="rotate(-30 25 25)"/>
+            <!-- Rose -->
+            <circle cx="60" cy="60" r="10" fill="#ff1493" opacity="0.9"/>
+            <circle cx="60" cy="60" r="18" fill="#ff69b4" opacity="0.7"/>
+            <circle cx="60" cy="60" r="26" fill="#ffc0cb" opacity="0.5"/>
+            <ellipse cx="60" cy="45" rx="14" ry="20" fill="#ff69b4" opacity="0.6"/>
+            <ellipse cx="60" cy="75" rx="14" ry="20" fill="#ff69b4" opacity="0.6"/>
+            <ellipse cx="45" cy="60" rx="20" ry="14" fill="#ffc0cb" opacity="0.6"/>
+            <ellipse cx="75" cy="60" rx="20" ry="14" fill="#ffc0cb" opacity="0.6"/>
+        </svg>
+
+        <svg class="corner-rose corner-rose-top-right" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <!-- Vines -->
+            <path d="M 60 60 Q 90 40, 110 20" stroke="#90a955" stroke-width="2" fill="none" opacity="0.6"/>
+            <path d="M 60 60 Q 80 30, 100 10" stroke="#90a955" stroke-width="2" fill="none" opacity="0.6"/>
+            <!-- Leaves -->
+            <ellipse cx="85" cy="35" rx="8" ry="12" fill="#90a955" opacity="0.5" transform="rotate(45 85 35)"/>
+            <ellipse cx="95" cy="25" rx="7" ry="10" fill="#90a955" opacity="0.5" transform="rotate(30 95 25)"/>
+            <!-- Rose -->
+            <circle cx="60" cy="60" r="10" fill="#ff1493" opacity="0.9"/>
+            <circle cx="60" cy="60" r="18" fill="#ff69b4" opacity="0.7"/>
+            <circle cx="60" cy="60" r="26" fill="#ffc0cb" opacity="0.5"/>
+            <ellipse cx="60" cy="45" rx="14" ry="20" fill="#ff69b4" opacity="0.6"/>
+            <ellipse cx="60" cy="75" rx="14" ry="20" fill="#ff69b4" opacity="0.6"/>
+            <ellipse cx="45" cy="60" rx="20" ry="14" fill="#ffc0cb" opacity="0.6"/>
+            <ellipse cx="75" cy="60" rx="20" ry="14" fill="#ffc0cb" opacity="0.6"/>
+        </svg>
+
+        <svg class="corner-rose corner-rose-bottom-left" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <!-- Vines -->
+            <path d="M 60 60 Q 30 80, 10 100" stroke="#90a955" stroke-width="2" fill="none" opacity="0.6"/>
+            <path d="M 60 60 Q 40 90, 20 110" stroke="#90a955" stroke-width="2" fill="none" opacity="0.6"/>
+            <!-- Leaves -->
+            <ellipse cx="35" cy="85" rx="8" ry="12" fill="#90a955" opacity="0.5" transform="rotate(45 35 85)"/>
+            <ellipse cx="25" cy="95" rx="7" ry="10" fill="#90a955" opacity="0.5" transform="rotate(30 25 95)"/>
+            <!-- Rose -->
+            <circle cx="60" cy="60" r="10" fill="#ff1493" opacity="0.9"/>
+            <circle cx="60" cy="60" r="18" fill="#ff69b4" opacity="0.7"/>
+            <circle cx="60" cy="60" r="26" fill="#ffc0cb" opacity="0.5"/>
+            <ellipse cx="60" cy="45" rx="14" ry="20" fill="#ff69b4" opacity="0.6"/>
+            <ellipse cx="60" cy="75" rx="14" ry="20" fill="#ff69b4" opacity="0.6"/>
+            <ellipse cx="45" cy="60" rx="20" ry="14" fill="#ffc0cb" opacity="0.6"/>
+            <ellipse cx="75" cy="60" rx="20" ry="14" fill="#ffc0cb" opacity="0.6"/>
+        </svg>
+
+        <svg class="corner-rose corner-rose-bottom-right" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <!-- Vines -->
+            <path d="M 60 60 Q 90 80, 110 100" stroke="#90a955" stroke-width="2" fill="none" opacity="0.6"/>
+            <path d="M 60 60 Q 80 90, 100 110" stroke="#90a955" stroke-width="2" fill="none" opacity="0.6"/>
+            <!-- Leaves -->
+            <ellipse cx="85" cy="85" rx="8" ry="12" fill="#90a955" opacity="0.5" transform="rotate(-45 85 85)"/>
+            <ellipse cx="95" cy="95" rx="7" ry="10" fill="#90a955" opacity="0.5" transform="rotate(-30 95 95)"/>
+            <!-- Rose -->
+            <circle cx="60" cy="60" r="10" fill="#ff1493" opacity="0.9"/>
+            <circle cx="60" cy="60" r="18" fill="#ff69b4" opacity="0.7"/>
+            <circle cx="60" cy="60" r="26" fill="#ffc0cb" opacity="0.5"/>
+            <ellipse cx="60" cy="45" rx="14" ry="20" fill="#ff69b4" opacity="0.6"/>
+            <ellipse cx="60" cy="75" rx="14" ry="20" fill="#ff69b4" opacity="0.6"/>
+            <ellipse cx="45" cy="60" rx="20" ry="14" fill="#ffc0cb" opacity="0.6"/>
+            <ellipse cx="75" cy="60" rx="20" ry="14" fill="#ffc0cb" opacity="0.6"/>
+        </svg>
+
+        <!-- SEQUENCE 2: Crown Rose - Blooms SECOND (1.5s - 2.5s) -->
+        <svg class="crown-rose" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <!-- Vines extending down -->
+            <path d="M 50 50 Q 30 70, 20 90" stroke="#90a955" stroke-width="2" fill="none" opacity="0.5"/>
+            <path d="M 50 50 Q 70 70, 80 90" stroke="#90a955" stroke-width="2" fill="none" opacity="0.5"/>
+            <!-- Leaves -->
+            <ellipse cx="35" cy="70" rx="6" ry="9" fill="#90a955" opacity="0.4" transform="rotate(30 35 70)"/>
+            <ellipse cx="65" cy="70" rx="6" ry="9" fill="#90a955" opacity="0.4" transform="rotate(-30 65 70)"/>
+            <!-- Rose -->
+            <circle cx="50" cy="50" r="8" fill="#ff1493" opacity="0.95"/>
+            <circle cx="50" cy="50" r="15" fill="#ff69b4" opacity="0.8"/>
+            <circle cx="50" cy="50" r="22" fill="#ffc0cb" opacity="0.6"/>
+            <circle cx="50" cy="50" r="30" fill="#ffc0cb" opacity="0.4"/>
+            <ellipse cx="50" cy="35" rx="12" ry="18" fill="#ff69b4" opacity="0.7"/>
+            <ellipse cx="50" cy="65" rx="12" ry="18" fill="#ff69b4" opacity="0.7"/>
+            <ellipse cx="35" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.7"/>
+            <ellipse cx="65" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.7"/>
+        </svg>
+
+        <!-- SEQUENCE 3: Accent Roses - Bloom THIRD (2.7s - 3.7s) -->
+        <svg class="accent-rose accent-rose-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <circle cx="50" cy="50" r="8" fill="#ff69b4" opacity="0.9"/>
             <circle cx="50" cy="50" r="15" fill="#ff69b4" opacity="0.7"/>
             <circle cx="50" cy="50" r="22" fill="#ffc0cb" opacity="0.5"/>
-            <circle cx="50" cy="50" r="30" fill="#ffc0cb" opacity="0.3"/>
             <ellipse cx="50" cy="35" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
             <ellipse cx="50" cy="65" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
             <ellipse cx="35" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
             <ellipse cx="65" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
         </svg>
 
-        <svg class="rose rose-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <svg class="accent-rose accent-rose-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <circle cx="50" cy="50" r="8" fill="#ff69b4" opacity="0.9"/>
             <circle cx="50" cy="50" r="15" fill="#ff69b4" opacity="0.7"/>
             <circle cx="50" cy="50" r="22" fill="#ffc0cb" opacity="0.5"/>
-            <circle cx="50" cy="50" r="30" fill="#ffc0cb" opacity="0.3"/>
             <ellipse cx="50" cy="35" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
             <ellipse cx="50" cy="65" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
             <ellipse cx="35" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
             <ellipse cx="65" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
         </svg>
 
-        <svg class="rose rose-3" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <svg class="accent-rose accent-rose-3" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <circle cx="50" cy="50" r="8" fill="#ff69b4" opacity="0.9"/>
             <circle cx="50" cy="50" r="15" fill="#ff69b4" opacity="0.7"/>
             <circle cx="50" cy="50" r="22" fill="#ffc0cb" opacity="0.5"/>
-            <circle cx="50" cy="50" r="30" fill="#ffc0cb" opacity="0.3"/>
             <ellipse cx="50" cy="35" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
             <ellipse cx="50" cy="65" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
             <ellipse cx="35" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
             <ellipse cx="65" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
         </svg>
 
-        <svg class="rose rose-4" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <svg class="accent-rose accent-rose-4" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <circle cx="50" cy="50" r="8" fill="#ff69b4" opacity="0.9"/>
             <circle cx="50" cy="50" r="15" fill="#ff69b4" opacity="0.7"/>
             <circle cx="50" cy="50" r="22" fill="#ffc0cb" opacity="0.5"/>
-            <circle cx="50" cy="50" r="30" fill="#ffc0cb" opacity="0.3"/>
             <ellipse cx="50" cy="35" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
             <ellipse cx="50" cy="65" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
             <ellipse cx="35" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
             <ellipse cx="65" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
         </svg>
 
-        <svg class="rose rose-5" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <svg class="accent-rose accent-rose-5" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <circle cx="50" cy="50" r="8" fill="#ff69b4" opacity="0.9"/>
             <circle cx="50" cy="50" r="15" fill="#ff69b4" opacity="0.7"/>
             <circle cx="50" cy="50" r="22" fill="#ffc0cb" opacity="0.5"/>
-            <circle cx="50" cy="50" r="30" fill="#ffc0cb" opacity="0.3"/>
             <ellipse cx="50" cy="35" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
             <ellipse cx="50" cy="65" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
             <ellipse cx="35" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
             <ellipse cx="65" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
         </svg>
 
-        <svg class="rose rose-6" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <svg class="accent-rose accent-rose-6" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <circle cx="50" cy="50" r="8" fill="#ff69b4" opacity="0.9"/>
             <circle cx="50" cy="50" r="15" fill="#ff69b4" opacity="0.7"/>
             <circle cx="50" cy="50" r="22" fill="#ffc0cb" opacity="0.5"/>
-            <circle cx="50" cy="50" r="30" fill="#ffc0cb" opacity="0.3"/>
             <ellipse cx="50" cy="35" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
             <ellipse cx="50" cy="65" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
             <ellipse cx="35" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
             <ellipse cx="65" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
         </svg>
 
-        <!-- Floating Petals -->
+        <!-- SEQUENCE 4: Floating Petals - Fall LAST (4.2s onwards) -->
         <div class="petal petal-1"></div>
         <div class="petal petal-2"></div>
         <div class="petal petal-3"></div>
         <div class="petal petal-4"></div>
         <div class="petal petal-5"></div>
+        <div class="petal petal-6"></div>
+        <div class="petal petal-7"></div>
+        <div class="petal petal-8"></div>
 
         <div class="hero-content">
             <h1>Wedding Catering Services</h1>
