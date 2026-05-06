@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Catering Services - Your Dream Wedding Awaits</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-pink: #f4d4d4;
+            --secondary-pink: #fceef0;
+            --accent-gold: #d4af37;
+            --text-dark: #2c2c2c;
+            --text-light: #6b6b6b;
+            --white: #ffffff;
+            --cream: #faf8f5;
+            --rose-pink: #ffc0cb;
+            --rose-dark: #ff69b4;
+            --vine-green: #7a9b76;
+            --leaf-green: #8fae8d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-gold);
+        }
+
+        .cta-button {
+            background: var(--accent-gold);
+            color: var(--white);
+            padding: 0.7rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent-gold);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--accent-gold);
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section with Blooming Roses */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #fceef0 0%, #f4d4d4 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Corner Roses with Vines - Bloom FIRST */
+        .corner-rose {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            opacity: 0;
+            animation: bloomCorner 1.2s ease-out forwards;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+        }
+
+        .corner-rose-top-left {
+            top: 3%;
+            left: 2%;
+            animation-delay: 0s;
+        }
+
+        .corner-rose-top-right {
+            top: 3%;
+            right: 2%;
+            animation-delay: 0.15s;
+        }
+
+        .corner-rose-bottom-left {
+            bottom: 3%;
+            left: 2%;
+            animation-delay: 0.3s;
+        }
+
+        .corner-rose-bottom-right {
+            bottom: 3%;
+            right: 2%;
+            animation-delay: 0.45s;
+        }
+
+        @keyframes bloomCorner {
+            0% {
+                transform: scale(0) rotate(-45deg);
+                opacity: 0;
+            }
+            60% {
+                opacity: 0.9;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 0.85;
+            }
+        }
+
+        /* Center Crown Rose with decorative vines - Blooms SECOND */
+        .crown-rose {
+            position: absolute;
+            top: 12%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 450px;
+            height: 100px;
+            opacity: 0;
+            animation: bloomCrown 1s ease-out forwards;
+            animation-delay: 1.5s;
+            z-index: 5;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.08));
+        }
+
+        @keyframes bloomCrown {
+            0% {
+                transform: translateX(-50%) scale(0) rotate(-20deg);
+                opacity: 0;
+            }
+            60% {
+                opacity: 0.95;
+            }
+            100% {
+                transform: translateX(-50%) scale(1) rotate(0deg);
+                opacity: 0.9;
+            }
+        }
+
+        /* Floating Accent Roses - Bloom THIRD */
+        .accent-rose {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            animation: bloomAccent 0.8s ease-out forwards;
+            opacity: 0;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .accent-rose-1 { top: 30%; left: 15%; animation-delay: 2.7s; }
+        .accent-rose-2 { top: 35%; right: 18%; animation-delay: 2.9s; width: 60px; height: 60px; }
+        .accent-rose-3 { bottom: 30%; left: 12%; animation-delay: 3.1s; width: 65px; height: 65px; }
+        .accent-rose-4 { bottom: 35%; right: 15%; animation-delay: 3.3s; }
+        .accent-rose-5 { top: 50%; left: 8%; animation-delay: 3.5s; width: 55px; height: 55px; }
+        .accent-rose-6 { top: 55%; right: 10%; animation-delay: 3.7s; width: 60px; height: 60px; }
+
+        @keyframes bloomAccent {
+            0% {
+                transform: scale(0) rotate(-30deg);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 0.6;
+            }
+        }
+
+        /* Floating Petals - Fall LAST */
+        .petal {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(135deg, #ffc0cb, #ff69b4);
+            border-radius: 50% 0 50% 50%;
+            opacity: 0;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .petal-1 { top: -10%; left: 20%; animation-delay: 4.2s; }
+        .petal-2 { top: -10%; left: 50%; animation-delay: 4.4s; }
+        .petal-3 { top: -10%; left: 70%; animation-delay: 4.6s; }
+        .petal-4 { top: -10%; left: 35%; animation-delay: 4.8s; }
+        .petal-5 { top: -10%; left: 80%; animation-delay: 5s; }
+        .petal-6 { top: -10%; left: 15%; animation-delay: 5.2s; }
+        .petal-7 { top: -10%; left: 60%; animation-delay: 5.4s; }
+        .petal-8 { top: -10%; left: 90%; animation-delay: 5.6s; }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            padding: 2rem;
+            margin-top: 6rem;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            animation: fadeInUp 1s ease;
+            animation-delay: 2.5s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+        }
+
+        .hero .tagline {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-style: italic;
+            animation: fadeInUp 1s ease;
+            animation-delay: 2.7s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .hero .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 2.5rem;
+            font-weight: 500;
+            animation: fadeInUp 1s ease;
+            animation-delay: 2.9s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease;
+            animation-delay: 3.1s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent-gold);
+            color: var(--white);
+            border: 2px solid var(--accent-gold);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--accent-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-dark);
+            border: 2px solid var(--text-dark);
+        }
+
+        .btn-secondary:hover {
+            background: var(--text-dark);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 6rem 2rem;
+            background: var(--cream);
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .about-content p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        /* Why Choose Us Section */
+        .why-choose {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+
+        .why-choose-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .why-choose h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            padding: 2.5rem 2rem;
+            background: var(--cream);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--primary-pink) 0%, var(--secondary-pink) 100%);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            line-height: 2;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-gold);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .corner-rose {
+                width: 130px !important;
+                height: 130px !important;
+            }
+
+            .crown-rose {
+                width: 350px !important;
+                height: 80px !important;
+            }
+
+            .accent-rose {
+                width: 55px !important;
+                height: 55px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.1rem;
+            }
+
+            .about-content h2,
+            .why-choose h2,
+            .cta-section h2 {
+                font-size: 2.2rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .corner-rose {
+                width: 100px !important;
+                height: 100px !important;
+            }
+
+            .crown-rose {
+                width: 280px !important;
+                height: 70px !important;
+            }
+
+            .accent-rose {
+                width: 45px !important;
+                height: 45px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Wedding<span>Feast</span></a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="packages.html">Packages</a></li>
+                <li><a href="contact.html" class="cta-button">Book Now</a></li>
+            </ul>
+
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Blooming Roses -->
+    <section class="hero">
+        <!-- SEQUENCE 1: Corner Roses with Vines - Bloom FIRST (0s - 1.5s) -->
+        
+        <!-- Top Left Corner -->
+        <svg class="corner-rose corner-rose-top-left" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+            <!-- Decorative vines -->
+            <path d="M 120 100 Q 90 60, 60 40 Q 50 30, 40 25" stroke="#7a9b76" stroke-width="2.5" fill="none" opacity="0.7" stroke-linecap="round"/>
+            <path d="M 110 110 Q 70 80, 45 55 Q 35 45, 25 35" stroke="#7a9b76" stroke-width="2" fill="none" opacity="0.6" stroke-linecap="round"/>
+            
+            <!-- Leaves along vines -->
+            <ellipse cx="70" cy="55" rx="10" ry="16" fill="#8fae8d" opacity="0.6" transform="rotate(-45 70 55)"/>
+            <ellipse cx="50" cy="40" rx="9" ry="14" fill="#8fae8d" opacity="0.5" transform="rotate(-50 50 40)"/>
+            <ellipse cx="80" cy="70" rx="8" ry="13" fill="#a4c2a2" opacity="0.5" transform="rotate(-40 80 70)"/>
+            <ellipse cx="90" cy="85" rx="11" ry="15" fill="#8fae8d" opacity="0.6" transform="rotate(-35 90 85)"/>
+            
+            <!-- Watercolor rose -->
+            <circle cx="120" cy="100" r="12" fill="#e6a2b8" opacity="0.3"/>
+            <circle cx="120" cy="100" r="18" fill="#f0b5c8" opacity="0.4"/>
+            <circle cx="120" cy="100" r="25" fill="#f5c9d6" opacity="0.35"/>
+            <circle cx="120" cy="100" r="32" fill="#fad8e3" opacity="0.25"/>
+            
+            <!-- Rose petals - layered for watercolor effect -->
+            <ellipse cx="120" cy="85" rx="16" ry="22" fill="#f0a8c0" opacity="0.5"/>
+            <ellipse cx="120" cy="115" rx="16" ry="22" fill="#f5b8cc" opacity="0.5"/>
+            <ellipse cx="105" cy="100" rx="22" ry="16" fill="#f7c4d6" opacity="0.5"/>
+            <ellipse cx="135" cy="100" rx="22" ry="16" fill="#f9d0e0" opacity="0.5"/>
+            
+            <!-- Inner rose details -->
+            <circle cx="120" cy="100" r="10" fill="#d88fa8" opacity="0.7"/>
+            <circle cx="120" cy="100" r="6" fill="#c97894" opacity="0.8"/>
+        </svg>
+
+        <!-- Top Right Corner -->
+        <svg class="corner-rose corner-rose-top-right" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+            <!-- Decorative vines -->
+            <path d="M 60 100 Q 90 60, 120 40 Q 130 30, 140 25" stroke="#7a9b76" stroke-width="2.5" fill="none" opacity="0.7" stroke-linecap="round"/>
+            <path d="M 70 110 Q 110 80, 135 55 Q 145 45, 155 35" stroke="#7a9b76" stroke-width="2" fill="none" opacity="0.6" stroke-linecap="round"/>
+            
+            <!-- Leaves -->
+            <ellipse cx="110" cy="55" rx="10" ry="16" fill="#8fae8d" opacity="0.6" transform="rotate(45 110 55)"/>
+            <ellipse cx="130" cy="40" rx="9" ry="14" fill="#8fae8d" opacity="0.5" transform="rotate(50 130 40)"/>
+            <ellipse cx="100" cy="70" rx="8" ry="13" fill="#a4c2a2" opacity="0.5" transform="rotate(40 100 70)"/>
+            <ellipse cx="90" cy="85" rx="11" ry="15" fill="#8fae8d" opacity="0.6" transform="rotate(35 90 85)"/>
+            
+            <!-- Watercolor rose -->
+            <circle cx="60" cy="100" r="12" fill="#e6a2b8" opacity="0.3"/>
+            <circle cx="60" cy="100" r="18" fill="#f0b5c8" opacity="0.4"/>
+            <circle cx="60" cy="100" r="25" fill="#f5c9d6" opacity="0.35"/>
+            <circle cx="60" cy="100" r="32" fill="#fad8e3" opacity="0.25"/>
+            
+            <!-- Rose petals -->
+            <ellipse cx="60" cy="85" rx="16" ry="22" fill="#f0a8c0" opacity="0.5"/>
+            <ellipse cx="60" cy="115" rx="16" ry="22" fill="#f5b8cc" opacity="0.5"/>
+            <ellipse cx="45" cy="100" rx="22" ry="16" fill="#f7c4d6" opacity="0.5"/>
+            <ellipse cx="75" cy="100" rx="22" ry="16" fill="#f9d0e0" opacity="0.5"/>
+            
+            <!-- Inner rose -->
+            <circle cx="60" cy="100" r="10" fill="#d88fa8" opacity="0.7"/>
+            <circle cx="60" cy="100" r="6" fill="#c97894" opacity="0.8"/>
+        </svg>
+
+        <!-- Bottom Left Corner -->
+        <svg class="corner-rose corner-rose-bottom-left" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+            <!-- Decorative vines -->
+            <path d="M 120 80 Q 90 120, 60 140 Q 50 150, 40 155" stroke="#7a9b76" stroke-width="2.5" fill="none" opacity="0.7" stroke-linecap="round"/>
+            <path d="M 110 70 Q 70 100, 45 125 Q 35 135, 25 145" stroke="#7a9b76" stroke-width="2" fill="none" opacity="0.6" stroke-linecap="round"/>
+            
+            <!-- Leaves -->
+            <ellipse cx="70" cy="125" rx="10" ry="16" fill="#8fae8d" opacity="0.6" transform="rotate(45 70 125)"/>
+            <ellipse cx="50" cy="140" rx="9" ry="14" fill="#8fae8d" opacity="0.5" transform="rotate(50 50 140)"/>
+            <ellipse cx="80" cy="110" rx="8" ry="13" fill="#a4c2a2" opacity="0.5" transform="rotate(40 80 110)"/>
+            <ellipse cx="90" cy="95" rx="11" ry="15" fill="#8fae8d" opacity="0.6" transform="rotate(35 90 95)"/>
+            
+            <!-- Watercolor rose -->
+            <circle cx="120" cy="80" r="12" fill="#e6a2b8" opacity="0.3"/>
+            <circle cx="120" cy="80" r="18" fill="#f0b5c8" opacity="0.4"/>
+            <circle cx="120" cy="80" r="25" fill="#f5c9d6" opacity="0.35"/>
+            <circle cx="120" cy="80" r="32" fill="#fad8e3" opacity="0.25"/>
+            
+            <!-- Rose petals -->
+            <ellipse cx="120" cy="65" rx="16" ry="22" fill="#f0a8c0" opacity="0.5"/>
+            <ellipse cx="120" cy="95" rx="16" ry="22" fill="#f5b8cc" opacity="0.5"/>
+            <ellipse cx="105" cy="80" rx="22" ry="16" fill="#f7c4d6" opacity="0.5"/>
+            <ellipse cx="135" cy="80" rx="22" ry="16" fill="#f9d0e0" opacity="0.5"/>
+            
+            <!-- Inner rose -->
+            <circle cx="120" cy="80" r="10" fill="#d88fa8" opacity="0.7"/>
+            <circle cx="120" cy="80" r="6" fill="#c97894" opacity="0.8"/>
+        </svg>
+
+        <!-- Bottom Right Corner -->
+        <svg class="corner-rose corner-rose-bottom-right" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+            <!-- Decorative vines -->
+            <path d="M 60 80 Q 90 120, 120 140 Q 130 150, 140 155" stroke="#7a9b76" stroke-width="2.5" fill="none" opacity="0.7" stroke-linecap="round"/>
+            <path d="M 70 70 Q 110 100, 135 125 Q 145 135, 155 145" stroke="#7a9b76" stroke-width="2" fill="none" opacity="0.6" stroke-linecap="round"/>
+            
+            <!-- Leaves -->
+            <ellipse cx="110" cy="125" rx="10" ry="16" fill="#8fae8d" opacity="0.6" transform="rotate(-45 110 125)"/>
+            <ellipse cx="130" cy="140" rx="9" ry="14" fill="#8fae8d" opacity="0.5" transform="rotate(-50 130 140)"/>
+            <ellipse cx="100" cy="110" rx="8" ry="13" fill="#a4c2a2" opacity="0.5" transform="rotate(-40 100 110)"/>
+            <ellipse cx="90" cy="95" rx="11" ry="15" fill="#8fae8d" opacity="0.6" transform="rotate(-35 90 95)"/>
+            
+            <!-- Watercolor rose -->
+            <circle cx="60" cy="80" r="12" fill="#e6a2b8" opacity="0.3"/>
+            <circle cx="60" cy="80" r="18" fill="#f0b5c8" opacity="0.4"/>
+            <circle cx="60" cy="80" r="25" fill="#f5c9d6" opacity="0.35"/>
+            <circle cx="60" cy="80" r="32" fill="#fad8e3" opacity="0.25"/>
+            
+            <!-- Rose petals -->
+            <ellipse cx="60" cy="65" rx="16" ry="22" fill="#f0a8c0" opacity="0.5"/>
+            <ellipse cx="60" cy="95" rx="16" ry="22" fill="#f5b8cc" opacity="0.5"/>
+            <ellipse cx="45" cy="80" rx="22" ry="16" fill="#f7c4d6" opacity="0.5"/>
+            <ellipse cx="75" cy="80" rx="22" ry="16" fill="#f9d0e0" opacity="0.5"/>
+            
+            <!-- Inner rose -->
+            <circle cx="60" cy="80" r="10" fill="#d88fa8" opacity="0.7"/>
+            <circle cx="60" cy="80" r="6" fill="#c97894" opacity="0.8"/>
+        </svg>
+
+        <!-- SEQUENCE 2: Crown Rose with Decorative Scrollwork - Blooms SECOND (1.5s - 2.5s) -->
+        <svg class="crown-rose" viewBox="0 0 450 100" xmlns="http://www.w3.org/2000/svg">
+            <!-- Left decorative scroll -->
+            <path d="M 50 50 Q 80 30, 110 40 Q 120 45, 130 50" stroke="#7a9b76" stroke-width="2.5" fill="none" opacity="0.7" stroke-linecap="round"/>
+            <path d="M 55 55 C 75 40, 95 42, 115 50" stroke="#8fae8d" stroke-width="2" fill="none" opacity="0.6"/>
+            <circle cx="60" cy="48" r="4" fill="#8fae8d" opacity="0.5"/>
+            <circle cx="80" cy="42" r="3" fill="#a4c2a2" opacity="0.5"/>
+            
+            <!-- Right decorative scroll -->
+            <path d="M 400 50 Q 370 30, 340 40 Q 330 45, 320 50" stroke="#7a9b76" stroke-width="2.5" fill="none" opacity="0.7" stroke-linecap="round"/>
+            <path d="M 395 55 C 375 40, 355 42, 335 50" stroke="#8fae8d" stroke-width="2" fill="none" opacity="0.6"/>
+            <circle cx="390" cy="48" r="4" fill="#8fae8d" opacity="0.5"/>
+            <circle cx="370" cy="42" r="3" fill="#a4c2a2" opacity="0.5"/>
+            
+            <!-- Center watercolor rose (larger) -->
+            <circle cx="225" cy="50" r="15" fill="#e6a2b8" opacity="0.35"/>
+            <circle cx="225" cy="50" r="22" fill="#f0b5c8" opacity="0.45"/>
+            <circle cx="225" cy="50" r="28" fill="#f5c9d6" opacity="0.4"/>
+            <circle cx="225" cy="50" r="35" fill="#fad8e3" opacity="0.3"/>
+            
+            <!-- Rose petals -->
+            <ellipse cx="225" cy="32" rx="18" ry="26" fill="#f0a8c0" opacity="0.55"/>
+            <ellipse cx="225" cy="68" rx="18" ry="26" fill="#f5b8cc" opacity="0.55"/>
+            <ellipse cx="207" cy="50" rx="26" ry="18" fill="#f7c4d6" opacity="0.55"/>
+            <ellipse cx="243" cy="50" rx="26" ry="18" fill="#f9d0e0" opacity="0.55"/>
+            
+            <!-- Diagonal petals -->
+            <ellipse cx="210" cy="35" rx="20" ry="15" fill="#f2b0c4" opacity="0.5" transform="rotate(-45 210 35)"/>
+            <ellipse cx="240" cy="35" rx="20" ry="15" fill="#f2b0c4" opacity="0.5" transform="rotate(45 240 35)"/>
+            <ellipse cx="210" cy="65" rx="20" ry="15" fill="#f5c0d2" opacity="0.5" transform="rotate(45 210 65)"/>
+            <ellipse cx="240" cy="65" rx="20" ry="15" fill="#f5c0d2" opacity="0.5" transform="rotate(-45 240 65)"/>
+            
+            <!-- Inner rose -->
+            <circle cx="225" cy="50" r="12" fill="#d88fa8" opacity="0.75"/>
+            <circle cx="225" cy="50" r="8" fill="#c97894" opacity="0.85"/>
+            <circle cx="225" cy="50" r="4" fill="#b86680" opacity="0.9"/>
+            
+            <!-- Vine extending down -->
+            <path d="M 225 85 Q 215 100, 210 115" stroke="#8fae8d" stroke-width="1.5" fill="none" opacity="0.5"/>
+            <path d="M 225 85 Q 235 100, 240 115" stroke="#8fae8d" stroke-width="1.5" fill="none" opacity="0.5"/>
+            <ellipse cx="218" cy="95" rx="5" ry="8" fill="#a4c2a2" opacity="0.4" transform="rotate(25 218 95)"/>
+            <ellipse cx="232" cy="95" rx="5" ry="8" fill="#a4c2a2" opacity="0.4" transform="rotate(-25 232 95)"/>
+        </svg>
+
+        <!-- SEQUENCE 3: Accent Roses - Bloom THIRD (2.7s - 3.7s) -->
+        <svg class="accent-rose accent-rose-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="10" fill="#e6a2b8" opacity="0.3"/>
+            <circle cx="50" cy="50" r="15" fill="#f0b5c8" opacity="0.4"/>
+            <circle cx="50" cy="50" r="20" fill="#f5c9d6" opacity="0.35"/>
+            <ellipse cx="50" cy="38" rx="13" ry="18" fill="#f0a8c0" opacity="0.5"/>
+            <ellipse cx="50" cy="62" rx="13" ry="18" fill="#f5b8cc" opacity="0.5"/>
+            <ellipse cx="38" cy="50" rx="18" ry="13" fill="#f7c4d6" opacity="0.5"/>
+            <ellipse cx="62" cy="50" rx="18" ry="13" fill="#f9d0e0" opacity="0.5"/>
+            <circle cx="50" cy="50" r="8" fill="#d88fa8" opacity="0.7"/>
+            <circle cx="50" cy="50" r="5" fill="#c97894" opacity="0.8"/>
+        </svg>
+
+        <svg class="accent-rose accent-rose-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="10" fill="#e6a2b8" opacity="0.3"/>
+            <circle cx="50" cy="50" r="15" fill="#f0b5c8" opacity="0.4"/>
+            <circle cx="50" cy="50" r="20" fill="#f5c9d6" opacity="0.35"/>
+            <ellipse cx="50" cy="38" rx="13" ry="18" fill="#f0a8c0" opacity="0.5"/>
+            <ellipse cx="50" cy="62" rx="13" ry="18" fill="#f5b8cc" opacity="0.5"/>
+            <ellipse cx="38" cy="50" rx="18" ry="13" fill="#f7c4d6" opacity="0.5"/>
+            <ellipse cx="62" cy="50" rx="18" ry="13" fill="#f9d0e0" opacity="0.5"/>
+            <circle cx="50" cy="50" r="8" fill="#d88fa8" opacity="0.7"/>
+            <circle cx="50" cy="50" r="5" fill="#c97894" opacity="0.8"/>
+        </svg>
+
+        <svg class="accent-rose accent-rose-3" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="10" fill="#e6a2b8" opacity="0.3"/>
+            <circle cx="50" cy="50" r="15" fill="#f0b5c8" opacity="0.4"/>
+            <circle cx="50" cy="50" r="20" fill="#f5c9d6" opacity="0.35"/>
+            <ellipse cx="50" cy="38" rx="13" ry="18" fill="#f0a8c0" opacity="0.5"/>
+            <ellipse cx="50" cy="62" rx="13" ry="18" fill="#f5b8cc" opacity="0.5"/>
+            <ellipse cx="38" cy="50" rx="18" ry="13" fill="#f7c4d6" opacity="0.5"/>
+            <ellipse cx="62" cy="50" rx="18" ry="13" fill="#f9d0e0" opacity="0.5"/>
+            <circle cx="50" cy="50" r="8" fill="#d88fa8" opacity="0.7"/>
+            <circle cx="50" cy="50" r="5" fill="#c97894" opacity="0.8"/>
+        </svg>
+
+        <svg class="accent-rose accent-rose-4" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="10" fill="#e6a2b8" opacity="0.3"/>
+            <circle cx="50" cy="50" r="15" fill="#f0b5c8" opacity="0.4"/>
+            <circle cx="50" cy="50" r="20" fill="#f5c9d6" opacity="0.35"/>
+            <ellipse cx="50" cy="38" rx="13" ry="18" fill="#f0a8c0" opacity="0.5"/>
+            <ellipse cx="50" cy="62" rx="13" ry="18" fill="#f5b8cc" opacity="0.5"/>
+            <ellipse cx="38" cy="50" rx="18" ry="13" fill="#f7c4d6" opacity="0.5"/>
+            <ellipse cx="62" cy="50" rx="18" ry="13" fill="#f9d0e0" opacity="0.5"/>
+            <circle cx="50" cy="50" r="8" fill="#d88fa8" opacity="0.7"/>
+            <circle cx="50" cy="50" r="5" fill="#c97894" opacity="0.8"/>
+        </svg>
+
+        <svg class="accent-rose accent-rose-5" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="10" fill="#e6a2b8" opacity="0.3"/>
+            <circle cx="50" cy="50" r="15" fill="#f0b5c8" opacity="0.4"/>
+            <circle cx="50" cy="50" r="20" fill="#f5c9d6" opacity="0.35"/>
+            <ellipse cx="50" cy="38" rx="13" ry="18" fill="#f0a8c0" opacity="0.5"/>
+            <ellipse cx="50" cy="62" rx="13" ry="18" fill="#f5b8cc" opacity="0.5"/>
+            <ellipse cx="38" cy="50" rx="18" ry="13" fill="#f7c4d6" opacity="0.5"/>
+            <ellipse cx="62" cy="50" rx="18" ry="13" fill="#f9d0e0" opacity="0.5"/>
+            <circle cx="50" cy="50" r="8" fill="#d88fa8" opacity="0.7"/>
+            <circle cx="50" cy="50" r="5" fill="#c97894" opacity="0.8"/>
+        </svg>
+
+        <svg class="accent-rose accent-rose-6" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="10" fill="#e6a2b8" opacity="0.3"/>
+            <circle cx="50" cy="50" r="15" fill="#f0b5c8" opacity="0.4"/>
+            <circle cx="50" cy="50" r="20" fill="#f5c9d6" opacity="0.35"/>
+            <ellipse cx="50" cy="38" rx="13" ry="18" fill="#f0a8c0" opacity="0.5"/>
+            <ellipse cx="50" cy="62" rx="13" ry="18" fill="#f5b8cc" opacity="0.5"/>
+            <ellipse cx="38" cy="50" rx="18" ry="13" fill="#f7c4d6" opacity="0.5"/>
+            <ellipse cx="62" cy="50" rx="18" ry="13" fill="#f9d0e0" opacity="0.5"/>
+            <circle cx="50" cy="50" r="8" fill="#d88fa8" opacity="0.7"/>
+            <circle cx="50" cy="50" r="5" fill="#c97894" opacity="0.8"/>
+        </svg>
+
+        <!-- SEQUENCE 4: Floating Petals - Fall LAST (4.2s onwards) -->
+        <div class="petal petal-1"></div>
+        <div class="petal petal-2"></div>
+        <div class="petal petal-3"></div>
+        <div class="petal petal-4"></div>
+        <div class="petal petal-5"></div>
+        <div class="petal petal-6"></div>
+        <div class="petal petal-7"></div>
+        <div class="petal petal-8"></div>
+
+        <div class="hero-content">
+            <h1>Wedding Catering Services</h1>
+            <p class="tagline">Not a fairy, but we'll make your dream wedding come into reality.</p>
+            <p class="subtitle">Write your next chapter with us.</p>
+            <div class="hero-buttons">
+                <a href="contact.html" class="btn-primary">BOOK NOW!!!</a>
+                <a href="services.html" class="btn-secondary">Explore Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-content">
+                <h2>Experience-Driven Excellence</h2>
+                <p>We go beyond simply serving food. At WeddingFeast, we recognize that food plays a central role in every celebration, which is where we built our identity on.</p>
+                <p>From menu planning to presentation and service, every detail contributes to a refined and cohesive event experience. We ensure that your wedding catering is not just a necessity, but an element that contributes to your most significant memories.</p>
+                <a href="about.html" class="btn-primary">Learn More About Us</a>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1555244162-803834f70033?w=800" alt="Elegant wedding catering setup">
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose">
+        <div class="why-choose-container">
+            <h2>Why Choose WeddingFeast</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Exquisite Cuisine</h3>
+                    <p>Meticulously crafted menus featuring both local and international flavors, tailored to your preferences and dietary requirements.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Elegant Presentation</h3>
+                    <p>We value both taste and presentation equally, ensuring every dish is beautifully plated and every buffet setup is Instagram-worthy.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Personalized Service</h3>
+                    <p>From consultation to execution, we support you throughout the planning process, making your vision come to life.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Professional Team</h3>
+                    <p>Our experienced staff ensures flawless service, allowing you to enjoy your special day without any worries.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Quality Ingredients</h3>
+                    <p>We source only the freshest, highest-quality ingredients to create memorable culinary experiences.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>Memorable Experiences</h3>
+                    <p>From theatrical live-cooking performances to tailored interactive dining, we create moments your guests will remember.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Create Magic Together?</h2>
+        <p>Let us turn your wedding dreams into a delicious reality. Schedule a consultation and menu tasting today.</p>
+        <a href="contact.html" class="btn-primary" style="font-size: 1.1rem; padding: 1.2rem 3rem;">Schedule a Tasting</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Wedding<span style="color: var(--accent-gold);">Feast</span></h3>
+                <p>Creating unforgettable culinary experiences for your special day. Every detail crafted with love and elegance.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="about.html">About Us</a></p>
+                <p><a href="services.html">Our Services</a></p>
+                <p><a href="gallery.html">Gallery</a></p>
+                <p><a href="packages.html">Packages</a></p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Services</h3>
+                <p><a href="#">Buffet Service</a></p>
+                <p><a href="#">Plated Dinners</a></p>
+                <p><a href="#">Cocktail Receptions</a></p>
+                <p><a href="#">Custom Menus</a></p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i> +65 1234 5678</p>
+                <p><i class="fas fa-envelope"></i> hello@weddingfeast.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Singapore</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 WeddingFeast. All rights reserved. | Designed with ♥ for your special day</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav')) {
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
