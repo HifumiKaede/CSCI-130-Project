@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Rice and Vows</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-pink: #f4d4d4;
+            --secondary-pink: #fceef0;
+            --accent-gold: #d4af37;
+            --text-dark: #2c2c2c;
+            --text-light: #6b6b6b;
+            --white: #ffffff;
+            --cream: #faf8f5;
+            --bg-off-white: #fdfbf8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--bg-off-white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+
+        /* --- New Animation Styles --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-img { height: 50px; }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-gold); }
+
+        .cta-button {
+            background: var(--accent-gold);
+            color: var(--white);
+            padding: 0.7rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent-gold);
+        }
+
+        /* Hero Section */
+        .about-hero {
+            height: 50vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1600');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 70px;
+        }
+
+        .about-hero h1 { font-size: 4rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.3); }
+
+        /* General Section Styling */
+        section { padding: 6rem 2rem; }
+        .container-narrow { max-width: 900px; margin: 0 auto; text-align: center; }
+        h2 { font-size: 3rem; margin-bottom: 1.5rem; color: var(--text-dark); }
+        .divider { width: 60px; height: 3px; background: var(--accent-gold); margin: 2rem auto; }
+
+        /* Mission & Vision Split Section */
+        .mv-section { background: var(--white); }
+        .mv-content { display: flex; align-items: center; gap: 4rem; max-width: 1100px; margin: 0 auto; }
+        .mv-image { width: 450px; height: 550px; border-radius: 15px; object-fit: cover; box-shadow: 20px 20px 0 var(--secondary-pink); }
+        .mv-text { flex: 1; }
+        .mv-box { margin-bottom: 3rem; }
+        .mv-box h3 { font-size: 2.2rem; color: var(--accent-gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem; }
+        .mv-box p { font-size: 1.1rem; color: var(--text-light); text-align: left; }
+
+        /* Experience Section */
+        .process-section { background: var(--cream); }
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+        .process-step {
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 15px;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .process-step:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .step-number { font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: var(--primary-pink); font-weight: 700; margin-bottom: 0.5rem; display: block; }
+
+        /* FAQ Styling */
+        .faq-item { margin-bottom: 1.5rem; background: var(--white); border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: all 0.3s ease; overflow: hidden; }
+        .faq-item:hover { transform: translateX(5px); }
+        .faq-question { width: 100%; padding: 1.5rem; background: none; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.1rem; text-align: left; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background-color: var(--bg-off-white); }
+        .faq-answer p { padding: 1.5rem; color: var(--text-light); }
+
+        /* Footer */
+        footer { background: var(--text-dark); color: var(--white); padding: 4rem 2rem 2rem; }
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        .footer-section h3 { color: var(--accent-gold); margin-bottom: 1.5rem; font-size: 1.4rem; }
+        .footer-section p, .footer-section a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.95rem; line-height: 2; transition: 0.3s; }
+        .footer-section a:hover { color: var(--accent-gold); }
+
+        .social-links { display: flex; gap: 1rem; margin-top: 1.5rem; }
+        .social-links a {
+            width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .social-links a:hover { background: var(--accent-gold); transform: translateY(-3px); }
+
+        .footer-bottom {
+            text-align: center; border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 3rem; padding-top: 2rem; color: rgba(255,255,255,0.5); font-size: 0.85rem;
+        }
+
+        @media (max-width: 992px) {
+            .mv-content { flex-direction: column; text-align: center; }
+            .mv-image { width: 100%; max-width: 450px; }
+            .mv-box p { text-align: center; }
+            .mv-box h3 { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="index.html"><img src="logo.png" class="logo-img" alt="Rice and Vows"></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="packages.html">Packages</a></li>
+                <li><a href="contact.html" class="cta-button">Book Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="about-hero">
+        <h1 class="reveal">Our Story</h1>
+    </header>
+
+    <!-- Overview Section -->
+    <section class="story-section container-narrow reveal">
+        <h2>Overview</h2>
+        <p>Rice and Vows is a premier catering and event management service based in Quezon City, dedicated to elevating the wedding experience through culinary excellence and seamless execution. We bridge the gap between traditional Filipino hospitality and contemporary event design.</p>
+        <div class="divider"></div>
+        <h3>Our History</h3>
+        <p>Founded in 2024, Rice and Vows began as a boutique catering team with a passion for storytelling through food. We set out to create a service that prioritizes peace of mind alongside gourmet flavors, transforming the complexities of wedding planning into a curated journey of excellence.</p>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="mv-section">
+        <div class="mv-content">
+            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800" class="mv-image reveal" alt="Wedding Celebration">
+            <div class="mv-text reveal">
+                <div class="mv-box">
+                    <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                    <p>To provide couples with a stress-free, high-end catering experience by combining meticulous planning, world-class cuisine, and heartfelt service.</p>
+                </div>
+                <div class="mv-box">
+                    <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                    <p>To be the leading choice for wedding catering in the Philippines, recognized for our innovation in culinary arts and our unwavering commitment to perfection.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="process-section reveal">
+        <div class="container-narrow">
+            <h2>The Experience</h2>
+            <p>How we bring your vision to life, from the first grain of rice to the final vow.</p>
+        </div>
+        <div class="process-grid">
+            <div class="process-step">
+                <span class="step-number">01</span>
+                <h3>Consultation</h3>
+                <p>We sit down to understand your taste, theme, and the specific story you want to tell.</p>
+            </div>
+            <div class="process-step">
+                <span class="step-number">02</span>
+                <h3>Tasting</h3>
+                <p>Experience a curated selection of our signature dishes in an intimate, private setting.</p>
+            </div>
+            <div class="process-step">
+                <span class="step-number">03</span>
+                <h3>Refinement</h3>
+                <p>We fine-tune every detail, from the napkin folds to the subtle flavor profiles of your menu.</p>
+            </div>
+            <div class="process-step">
+                <span class="step-number">04</span>
+                <h3>Execution</h3>
+                <p>Our team handles everything on-site so you can focus on your special moment without worry.</p>
+            </div>
+        </div>
+    </section>
+
+  <!-- Replace the existing FAQ section with this expanded version -->
+<section class="faq-section">
+    <div class="container-narrow">
+        <h2>Common Inquiries</h2>
+        <p style="color: var(--text-light); margin-bottom: 3rem;">Detailed information regarding our operations and service standards.</p>
+    </div>
+    <div style="max-width: 900px; margin: 0 auto;">
+        
+        <!-- Regional Scope -->
+        <div class="faq-item">
+            <button class="faq-question">What is your primary service area? <i class="fas fa-plus"></i></button>
+            <div class="faq-answer"><p>We are strategically based in Quezon City and primarily serve the Metro Manila region. However, we are fully equipped to manage destination weddings across Luzon, subject to additional logistics and coordination fees.</p></div>
+        </div>
+
+        <!-- Sourcing & Quality -->
+        <div class="faq-item">
+            <button class="faq-question">How do you ensure ingredient quality and freshness? <i class="fas fa-plus"></i></button>
+            <div class="faq-answer"><p>Our supply chain management prioritizes "farm-to-vow" sourcing. We partner with local producers to ensure that our rice and produce are delivered fresh for every event, maintaining the high culinary standards established in our brand mission.</p></div>
+        </div>
+
+        <!-- Customization -->
+        <div class="faq-item">
+            <button class="faq-question">Do you accommodate specific dietary requirements? <i class="fas fa-plus"></i></button>
+            <div class="faq-answer"><p>Yes. Our culinary team is proficient in adapting menus for vegan, gluten-free, and halal requirements, as well as specific allergen management, ensuring an inclusive experience for all your guests.</p></div>
+        </div>
+
+        <!-- Competitive Differentiation -->
+        <div class="faq-item">
+            <button class="faq-question">What differentiates Rice and Vows from other caterers? <i class="fas fa-plus"></i></button>
+            <div class="faq-answer"><p>Our competitive advantage lies in our dual focus: gourmet innovation and meticulous event management. Unlike traditional caterers, we provide a holistic "experience" that bridges the gap between premium dining and stress-free planning.</p></div>
+        </div>
+
+        <!-- Logistics & Planning -->
+        <div class="faq-item">
+            <button class="faq-question">What is the lead time for booking? <i class="fas fa-plus"></i></button>
+            <div class="faq-answer"><p>To ensure the level of refinement we promise, we recommend booking at least 6 to 12 months in advance. This allows for a comprehensive consultation, tasting sessions, and detailed logistics planning.</p></div>
+        </div>
+
+        <!-- Staffing Standards -->
+        <div class="faq-item">
+            <button class="faq-question">What are your service and staffing standards? <i class="fas fa-plus"></i></button>
+            <div class="faq-answer"><p>Every event is managed by a dedicated project lead and a team of professionally trained servers. We maintain a strict server-to-guest ratio to ensure that every table receives attentive, high-end service.</p></div>
+        </div>
+
+        <!-- Sustainability -->
+        <div class="faq-item">
+            <button class="faq-question">Does Rice and Vows practice sustainable event management? <i class="fas fa-plus"></i></button>
+            <div class="faq-answer"><p>Absolutely. We are committed to reducing our environmental footprint by utilizing biodegradable service ware where appropriate and implementing rigorous food waste management protocols during our events.</p></div>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Rice and Vows</h3>
+                <p>Creating unforgettable culinary experiences for your special day. Every detail crafted with love and elegance.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="about.html">About Us</a></p>
+                <p><a href="services.html">Our Services</a></p>
+                <p><a href="gallery.html">Gallery</a></p>
+                <p><a href="packages.html">Packages</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <p><a href="#">Buffet Service</a></p>
+                <p><a href="#">Plated Dinners</a></p>
+                <p><a href="#">Cocktail Receptions</a></p>
+                <p><a href="#">Custom Menus</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i> +63 912 345 6789</p>
+                <p><i class="fas fa-envelope"></i> hello@riceandvows.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Quezon City, Philippines</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Rice and Vows. All rights reserved. | Designed with ♥ for your special day</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // FAQ Toggle Logic
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                const icon = button.querySelector('i');
+                if (answer.style.maxHeight) {
+                    answer.style.maxHeight = null;
+                    icon.classList.replace('fa-minus', 'fa-plus');
+                } else {
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                    icon.classList.replace('fa-plus', 'fa-minus');
+                }
+            });
+        });
+
+        // --- Intersection Observer for Animations ---
+        const observerOptions = {
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

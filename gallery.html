@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery - Rice and Vows</title>
 
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -119,12 +117,18 @@
         }
 
         .featured-banner {
-            width: auto; /* Fix stretching */
-            max-width: 100%; /* Ensure responsiveness */
-            height: auto; /* Maintain aspect ratio */
-            mix-blend-mode: multiply; /* Fix blending issues */
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            mix-blend-mode: multiply;
             object-fit: contain;
-            animation: fadeUp 1s ease;
+            /* Simple fade in for the banner */
+            animation: bannerFade 1.2s ease forwards;
+        }
+
+        @keyframes bannerFade {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         /* ===== GALLERY CONTENT ===== */
@@ -148,22 +152,24 @@
             margin: 50px auto;
         }
 
+        /* --- ANIMATION LOGIC --- */
         .gallery-item {
             aspect-ratio: 4 / 3;
             border-radius: 12px;
             overflow: hidden;
             cursor: pointer;
+            
+            /* Prepare for animation */
             opacity: 0;
             transform: translateY(40px);
-            animation: fadeUp 0.8s ease forwards;
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
-        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
-        .gallery-item:nth-child(2) { animation-delay: 0.2s; }
-        .gallery-item:nth-child(3) { animation-delay: 0.3s; }
-        .gallery-item:nth-child(4) { animation-delay: 0.4s; }
-        .gallery-item:nth-child(5) { animation-delay: 0.5s; }
-        .gallery-item:nth-child(6) { animation-delay: 0.6s; }
+        /* When the 'show' class is added via JS on scroll */
+        .gallery-item.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         .gallery-item img {
             width: 100%;
@@ -174,13 +180,6 @@
 
         .gallery-item:hover img {
             transform: scale(1.1);
-        }
-
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         /* ===== FOOTER ===== */
@@ -393,14 +392,17 @@
 </div>
 
 <script>
+    // Navigation Toggle
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
     menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
 
+    // Navbar Scroll Effect
     window.addEventListener('scroll', () => {
         document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
     });
 
+    // Modal Logic
     const modal = document.getElementById("imageModal");
     const modalImg = document.getElementById("modalImg");
     document.querySelectorAll(".gallery-item img").forEach(img => {
@@ -411,6 +413,27 @@
     });
     document.querySelector(".modal-close").onclick = () => modal.style.display = "none";
     modal.onclick = (e) => { if(e.target === modal) modal.style.display = "none"; };
+
+    // --- NEW SCROLL REVEAL ANIMATION ---
+    const observerOptions = {
+        threshold: 0.1
+    };
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                // Stagger the reveal slightly based on its index
+                setTimeout(() => {
+                    entry.target.classList.add('show');
+                }, index * 100); 
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.gallery-item').forEach(item => {
+        revealObserver.observe(item);
+    });
 </script>
 
 </body>
