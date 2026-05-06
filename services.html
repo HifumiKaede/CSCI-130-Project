@@ -263,36 +263,38 @@
         /* Specific adjustment for Laptop/Large Screens */
     @media (min-width: 1200px) {
         /* Increase the main section title */
-        .section-title h2 {
+        .section-intro h2 {
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
         }
 
-        /* Increase Culinary Offerings description text */
-        .service-item p {
+        /* Increase the intro paragraph */
+        .section-intro p {
+            font-size: 1.25rem;
+            line-height: 1.8;
+        }
+
+        /* Increase service titles (Elegant Buffet Service, etc.) */
+        .service-content h3 {
+            font-size: 3rem;
+        }
+
+        /* Increase service description text */
+        .service-content p {
             font-size: 1.25rem;
             line-height: 1.8;
             color: var(--text-light);
         }
 
-        /* Increase Culinary Offerings titles (Filipino, Western, etc.) */
-        .service-item h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            font-family: 'Cormorant Garamond', serif;
+        /* Increase feature list text */
+        .service-features li {
+            font-size: 1.1rem;
         }
 
-        /* Give the grid more breathing room on big screens */
-        .services-grid {
+        /* Give the sections more breathing room on big screens */
+        .service-row {
             gap: 5rem;
-            padding: 0 4rem;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-        /* Adjust Service Images for better scale */
-        .service-image {
-            height: 450px; /* Slightly taller for big screens */
+            margin-bottom: 10rem;
         }
     }
     </style>
