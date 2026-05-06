@@ -67,6 +67,10 @@
             transition: all 0.3s ease;
         }
 
+        nav.scrolled {
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -76,7 +80,21 @@
             align-items: center;
         }
 
-        .logo-img { height: 50px; }
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
 
         .nav-links {
             display: flex;
@@ -91,9 +109,29 @@
             font-weight: 500;
             font-size: 0.95rem;
             transition: color 0.3s ease;
+            position: relative;
         }
 
-        .nav-links a:hover, .nav-links a.active { color: var(--accent-gold); }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-gold);
+        }
 
         .cta-button {
             background: var(--accent-gold);
@@ -104,6 +142,27 @@
             font-weight: 600;
             transition: all 0.3s ease;
             border: 2px solid var(--accent-gold);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--accent-gold);
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            transition: all 0.3s ease;
         }
 
         /* Hero Section */
@@ -219,12 +278,26 @@
 
     <nav id="navbar">
         <div class="nav-container">
-            <a href="index.html"><img src="logo.png" class="logo-img" alt="Rice and Vows"></a>
-            <ul class="nav-links">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Rice and Vows" class="logo-img">
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html" class="active">About</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="packages.html">Packages</a></li>
+                <li><a href="contact.html" class="cta-button">Book Now</a></li>
+            </ul>
+
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
                 <li><a href="packages.html">Packages</a></li>
                 <li><a href="contact.html" class="cta-button">Book Now</a></li>
             </ul>
