@@ -24,7 +24,8 @@
             --cream: #faf8f5;
             --rose-pink: #ffc0cb;
             --rose-dark: #ff69b4;
-            --vine-green: #90a955;
+            --vine-green: #7a9b76;
+            --leaf-green: #8fae8d;
         }
 
         * {
@@ -166,33 +167,34 @@
         /* Corner Roses with Vines - Bloom FIRST */
         .corner-rose {
             position: absolute;
-            width: 120px;
-            height: 120px;
+            width: 180px;
+            height: 180px;
             opacity: 0;
             animation: bloomCorner 1.2s ease-out forwards;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
         }
 
         .corner-rose-top-left {
-            top: 5%;
-            left: 5%;
+            top: 3%;
+            left: 2%;
             animation-delay: 0s;
         }
 
         .corner-rose-top-right {
-            top: 5%;
-            right: 5%;
+            top: 3%;
+            right: 2%;
             animation-delay: 0.15s;
         }
 
         .corner-rose-bottom-left {
-            bottom: 5%;
-            left: 5%;
+            bottom: 3%;
+            left: 2%;
             animation-delay: 0.3s;
         }
 
         .corner-rose-bottom-right {
-            bottom: 5%;
-            right: 5%;
+            bottom: 3%;
+            right: 2%;
             animation-delay: 0.45s;
         }
 
@@ -202,39 +204,40 @@
                 opacity: 0;
             }
             60% {
-                opacity: 0.8;
+                opacity: 0.9;
             }
             100% {
                 transform: scale(1) rotate(0deg);
-                opacity: 0.7;
+                opacity: 0.85;
             }
         }
 
-        /* Center Crown Rose - Blooms SECOND */
+        /* Center Crown Rose with decorative vines - Blooms SECOND */
         .crown-rose {
             position: absolute;
-            top: 15%;
+            top: 12%;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
+            width: 450px;
             height: 100px;
             opacity: 0;
             animation: bloomCrown 1s ease-out forwards;
             animation-delay: 1.5s;
             z-index: 5;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.08));
         }
 
         @keyframes bloomCrown {
             0% {
-                transform: translateX(-50%) scale(0) rotate(-45deg);
+                transform: translateX(-50%) scale(0) rotate(-20deg);
                 opacity: 0;
             }
             60% {
-                opacity: 0.9;
+                opacity: 0.95;
             }
             100% {
                 transform: translateX(-50%) scale(1) rotate(0deg);
-                opacity: 0.8;
+                opacity: 0.9;
             }
         }
 
@@ -245,6 +248,7 @@
             height: 70px;
             animation: bloomAccent 0.8s ease-out forwards;
             opacity: 0;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
         }
 
         .accent-rose-1 { top: 30%; left: 15%; animation-delay: 2.7s; }
@@ -261,7 +265,7 @@
             }
             100% {
                 transform: scale(1) rotate(0deg);
-                opacity: 0.5;
+                opacity: 0.6;
             }
         }
 
@@ -585,13 +589,13 @@
             }
 
             .corner-rose {
-                width: 90px !important;
-                height: 90px !important;
+                width: 130px !important;
+                height: 130px !important;
             }
 
             .crown-rose {
-                width: 75px !important;
-                height: 75px !important;
+                width: 350px !important;
+                height: 80px !important;
             }
 
             .accent-rose {
@@ -647,13 +651,13 @@
             }
 
             .corner-rose {
-                width: 70px !important;
-                height: 70px !important;
+                width: 100px !important;
+                height: 100px !important;
             }
 
             .crown-rose {
-                width: 60px !important;
-                height: 60px !important;
+                width: 280px !important;
+                height: 70px !important;
             }
 
             .accent-rose {
@@ -689,152 +693,238 @@
     <!-- Hero Section with Blooming Roses -->
     <section class="hero">
         <!-- SEQUENCE 1: Corner Roses with Vines - Bloom FIRST (0s - 1.5s) -->
-        <svg class="corner-rose corner-rose-top-left" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-            <!-- Vines -->
-            <path d="M 60 60 Q 30 40, 10 20" stroke="#90a955" stroke-width="2" fill="none" opacity="0.6"/>
-            <path d="M 60 60 Q 40 30, 20 10" stroke="#90a955" stroke-width="2" fill="none" opacity="0.6"/>
-            <!-- Leaves -->
-            <ellipse cx="35" cy="35" rx="8" ry="12" fill="#90a955" opacity="0.5" transform="rotate(-45 35 35)"/>
-            <ellipse cx="25" cy="25" rx="7" ry="10" fill="#90a955" opacity="0.5" transform="rotate(-30 25 25)"/>
-            <!-- Rose -->
-            <circle cx="60" cy="60" r="10" fill="#ff1493" opacity="0.9"/>
-            <circle cx="60" cy="60" r="18" fill="#ff69b4" opacity="0.7"/>
-            <circle cx="60" cy="60" r="26" fill="#ffc0cb" opacity="0.5"/>
-            <ellipse cx="60" cy="45" rx="14" ry="20" fill="#ff69b4" opacity="0.6"/>
-            <ellipse cx="60" cy="75" rx="14" ry="20" fill="#ff69b4" opacity="0.6"/>
-            <ellipse cx="45" cy="60" rx="20" ry="14" fill="#ffc0cb" opacity="0.6"/>
-            <ellipse cx="75" cy="60" rx="20" ry="14" fill="#ffc0cb" opacity="0.6"/>
+        
+        <!-- Top Left Corner -->
+        <svg class="corner-rose corner-rose-top-left" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+            <!-- Decorative vines -->
+            <path d="M 120 100 Q 90 60, 60 40 Q 50 30, 40 25" stroke="#7a9b76" stroke-width="2.5" fill="none" opacity="0.7" stroke-linecap="round"/>
+            <path d="M 110 110 Q 70 80, 45 55 Q 35 45, 25 35" stroke="#7a9b76" stroke-width="2" fill="none" opacity="0.6" stroke-linecap="round"/>
+            
+            <!-- Leaves along vines -->
+            <ellipse cx="70" cy="55" rx="10" ry="16" fill="#8fae8d" opacity="0.6" transform="rotate(-45 70 55)"/>
+            <ellipse cx="50" cy="40" rx="9" ry="14" fill="#8fae8d" opacity="0.5" transform="rotate(-50 50 40)"/>
+            <ellipse cx="80" cy="70" rx="8" ry="13" fill="#a4c2a2" opacity="0.5" transform="rotate(-40 80 70)"/>
+            <ellipse cx="90" cy="85" rx="11" ry="15" fill="#8fae8d" opacity="0.6" transform="rotate(-35 90 85)"/>
+            
+            <!-- Watercolor rose -->
+            <circle cx="120" cy="100" r="12" fill="#e6a2b8" opacity="0.3"/>
+            <circle cx="120" cy="100" r="18" fill="#f0b5c8" opacity="0.4"/>
+            <circle cx="120" cy="100" r="25" fill="#f5c9d6" opacity="0.35"/>
+            <circle cx="120" cy="100" r="32" fill="#fad8e3" opacity="0.25"/>
+            
+            <!-- Rose petals - layered for watercolor effect -->
+            <ellipse cx="120" cy="85" rx="16" ry="22" fill="#f0a8c0" opacity="0.5"/>
+            <ellipse cx="120" cy="115" rx="16" ry="22" fill="#f5b8cc" opacity="0.5"/>
+            <ellipse cx="105" cy="100" rx="22" ry="16" fill="#f7c4d6" opacity="0.5"/>
+            <ellipse cx="135" cy="100" rx="22" ry="16" fill="#f9d0e0" opacity="0.5"/>
+            
+            <!-- Inner rose details -->
+            <circle cx="120" cy="100" r="10" fill="#d88fa8" opacity="0.7"/>
+            <circle cx="120" cy="100" r="6" fill="#c97894" opacity="0.8"/>
         </svg>
 
-        <svg class="corner-rose corner-rose-top-right" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-            <!-- Vines -->
-            <path d="M 60 60 Q 90 40, 110 20" stroke="#90a955" stroke-width="2" fill="none" opacity="0.6"/>
-            <path d="M 60 60 Q 80 30, 100 10" stroke="#90a955" stroke-width="2" fill="none" opacity="0.6"/>
+        <!-- Top Right Corner -->
+        <svg class="corner-rose corner-rose-top-right" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+            <!-- Decorative vines -->
+            <path d="M 60 100 Q 90 60, 120 40 Q 130 30, 140 25" stroke="#7a9b76" stroke-width="2.5" fill="none" opacity="0.7" stroke-linecap="round"/>
+            <path d="M 70 110 Q 110 80, 135 55 Q 145 45, 155 35" stroke="#7a9b76" stroke-width="2" fill="none" opacity="0.6" stroke-linecap="round"/>
+            
             <!-- Leaves -->
-            <ellipse cx="85" cy="35" rx="8" ry="12" fill="#90a955" opacity="0.5" transform="rotate(45 85 35)"/>
-            <ellipse cx="95" cy="25" rx="7" ry="10" fill="#90a955" opacity="0.5" transform="rotate(30 95 25)"/>
-            <!-- Rose -->
-            <circle cx="60" cy="60" r="10" fill="#ff1493" opacity="0.9"/>
-            <circle cx="60" cy="60" r="18" fill="#ff69b4" opacity="0.7"/>
-            <circle cx="60" cy="60" r="26" fill="#ffc0cb" opacity="0.5"/>
-            <ellipse cx="60" cy="45" rx="14" ry="20" fill="#ff69b4" opacity="0.6"/>
-            <ellipse cx="60" cy="75" rx="14" ry="20" fill="#ff69b4" opacity="0.6"/>
-            <ellipse cx="45" cy="60" rx="20" ry="14" fill="#ffc0cb" opacity="0.6"/>
-            <ellipse cx="75" cy="60" rx="20" ry="14" fill="#ffc0cb" opacity="0.6"/>
+            <ellipse cx="110" cy="55" rx="10" ry="16" fill="#8fae8d" opacity="0.6" transform="rotate(45 110 55)"/>
+            <ellipse cx="130" cy="40" rx="9" ry="14" fill="#8fae8d" opacity="0.5" transform="rotate(50 130 40)"/>
+            <ellipse cx="100" cy="70" rx="8" ry="13" fill="#a4c2a2" opacity="0.5" transform="rotate(40 100 70)"/>
+            <ellipse cx="90" cy="85" rx="11" ry="15" fill="#8fae8d" opacity="0.6" transform="rotate(35 90 85)"/>
+            
+            <!-- Watercolor rose -->
+            <circle cx="60" cy="100" r="12" fill="#e6a2b8" opacity="0.3"/>
+            <circle cx="60" cy="100" r="18" fill="#f0b5c8" opacity="0.4"/>
+            <circle cx="60" cy="100" r="25" fill="#f5c9d6" opacity="0.35"/>
+            <circle cx="60" cy="100" r="32" fill="#fad8e3" opacity="0.25"/>
+            
+            <!-- Rose petals -->
+            <ellipse cx="60" cy="85" rx="16" ry="22" fill="#f0a8c0" opacity="0.5"/>
+            <ellipse cx="60" cy="115" rx="16" ry="22" fill="#f5b8cc" opacity="0.5"/>
+            <ellipse cx="45" cy="100" rx="22" ry="16" fill="#f7c4d6" opacity="0.5"/>
+            <ellipse cx="75" cy="100" rx="22" ry="16" fill="#f9d0e0" opacity="0.5"/>
+            
+            <!-- Inner rose -->
+            <circle cx="60" cy="100" r="10" fill="#d88fa8" opacity="0.7"/>
+            <circle cx="60" cy="100" r="6" fill="#c97894" opacity="0.8"/>
         </svg>
 
-        <svg class="corner-rose corner-rose-bottom-left" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-            <!-- Vines -->
-            <path d="M 60 60 Q 30 80, 10 100" stroke="#90a955" stroke-width="2" fill="none" opacity="0.6"/>
-            <path d="M 60 60 Q 40 90, 20 110" stroke="#90a955" stroke-width="2" fill="none" opacity="0.6"/>
+        <!-- Bottom Left Corner -->
+        <svg class="corner-rose corner-rose-bottom-left" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+            <!-- Decorative vines -->
+            <path d="M 120 80 Q 90 120, 60 140 Q 50 150, 40 155" stroke="#7a9b76" stroke-width="2.5" fill="none" opacity="0.7" stroke-linecap="round"/>
+            <path d="M 110 70 Q 70 100, 45 125 Q 35 135, 25 145" stroke="#7a9b76" stroke-width="2" fill="none" opacity="0.6" stroke-linecap="round"/>
+            
             <!-- Leaves -->
-            <ellipse cx="35" cy="85" rx="8" ry="12" fill="#90a955" opacity="0.5" transform="rotate(45 35 85)"/>
-            <ellipse cx="25" cy="95" rx="7" ry="10" fill="#90a955" opacity="0.5" transform="rotate(30 25 95)"/>
-            <!-- Rose -->
-            <circle cx="60" cy="60" r="10" fill="#ff1493" opacity="0.9"/>
-            <circle cx="60" cy="60" r="18" fill="#ff69b4" opacity="0.7"/>
-            <circle cx="60" cy="60" r="26" fill="#ffc0cb" opacity="0.5"/>
-            <ellipse cx="60" cy="45" rx="14" ry="20" fill="#ff69b4" opacity="0.6"/>
-            <ellipse cx="60" cy="75" rx="14" ry="20" fill="#ff69b4" opacity="0.6"/>
-            <ellipse cx="45" cy="60" rx="20" ry="14" fill="#ffc0cb" opacity="0.6"/>
-            <ellipse cx="75" cy="60" rx="20" ry="14" fill="#ffc0cb" opacity="0.6"/>
+            <ellipse cx="70" cy="125" rx="10" ry="16" fill="#8fae8d" opacity="0.6" transform="rotate(45 70 125)"/>
+            <ellipse cx="50" cy="140" rx="9" ry="14" fill="#8fae8d" opacity="0.5" transform="rotate(50 50 140)"/>
+            <ellipse cx="80" cy="110" rx="8" ry="13" fill="#a4c2a2" opacity="0.5" transform="rotate(40 80 110)"/>
+            <ellipse cx="90" cy="95" rx="11" ry="15" fill="#8fae8d" opacity="0.6" transform="rotate(35 90 95)"/>
+            
+            <!-- Watercolor rose -->
+            <circle cx="120" cy="80" r="12" fill="#e6a2b8" opacity="0.3"/>
+            <circle cx="120" cy="80" r="18" fill="#f0b5c8" opacity="0.4"/>
+            <circle cx="120" cy="80" r="25" fill="#f5c9d6" opacity="0.35"/>
+            <circle cx="120" cy="80" r="32" fill="#fad8e3" opacity="0.25"/>
+            
+            <!-- Rose petals -->
+            <ellipse cx="120" cy="65" rx="16" ry="22" fill="#f0a8c0" opacity="0.5"/>
+            <ellipse cx="120" cy="95" rx="16" ry="22" fill="#f5b8cc" opacity="0.5"/>
+            <ellipse cx="105" cy="80" rx="22" ry="16" fill="#f7c4d6" opacity="0.5"/>
+            <ellipse cx="135" cy="80" rx="22" ry="16" fill="#f9d0e0" opacity="0.5"/>
+            
+            <!-- Inner rose -->
+            <circle cx="120" cy="80" r="10" fill="#d88fa8" opacity="0.7"/>
+            <circle cx="120" cy="80" r="6" fill="#c97894" opacity="0.8"/>
         </svg>
 
-        <svg class="corner-rose corner-rose-bottom-right" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-            <!-- Vines -->
-            <path d="M 60 60 Q 90 80, 110 100" stroke="#90a955" stroke-width="2" fill="none" opacity="0.6"/>
-            <path d="M 60 60 Q 80 90, 100 110" stroke="#90a955" stroke-width="2" fill="none" opacity="0.6"/>
+        <!-- Bottom Right Corner -->
+        <svg class="corner-rose corner-rose-bottom-right" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+            <!-- Decorative vines -->
+            <path d="M 60 80 Q 90 120, 120 140 Q 130 150, 140 155" stroke="#7a9b76" stroke-width="2.5" fill="none" opacity="0.7" stroke-linecap="round"/>
+            <path d="M 70 70 Q 110 100, 135 125 Q 145 135, 155 145" stroke="#7a9b76" stroke-width="2" fill="none" opacity="0.6" stroke-linecap="round"/>
+            
             <!-- Leaves -->
-            <ellipse cx="85" cy="85" rx="8" ry="12" fill="#90a955" opacity="0.5" transform="rotate(-45 85 85)"/>
-            <ellipse cx="95" cy="95" rx="7" ry="10" fill="#90a955" opacity="0.5" transform="rotate(-30 95 95)"/>
-            <!-- Rose -->
-            <circle cx="60" cy="60" r="10" fill="#ff1493" opacity="0.9"/>
-            <circle cx="60" cy="60" r="18" fill="#ff69b4" opacity="0.7"/>
-            <circle cx="60" cy="60" r="26" fill="#ffc0cb" opacity="0.5"/>
-            <ellipse cx="60" cy="45" rx="14" ry="20" fill="#ff69b4" opacity="0.6"/>
-            <ellipse cx="60" cy="75" rx="14" ry="20" fill="#ff69b4" opacity="0.6"/>
-            <ellipse cx="45" cy="60" rx="20" ry="14" fill="#ffc0cb" opacity="0.6"/>
-            <ellipse cx="75" cy="60" rx="20" ry="14" fill="#ffc0cb" opacity="0.6"/>
+            <ellipse cx="110" cy="125" rx="10" ry="16" fill="#8fae8d" opacity="0.6" transform="rotate(-45 110 125)"/>
+            <ellipse cx="130" cy="140" rx="9" ry="14" fill="#8fae8d" opacity="0.5" transform="rotate(-50 130 140)"/>
+            <ellipse cx="100" cy="110" rx="8" ry="13" fill="#a4c2a2" opacity="0.5" transform="rotate(-40 100 110)"/>
+            <ellipse cx="90" cy="95" rx="11" ry="15" fill="#8fae8d" opacity="0.6" transform="rotate(-35 90 95)"/>
+            
+            <!-- Watercolor rose -->
+            <circle cx="60" cy="80" r="12" fill="#e6a2b8" opacity="0.3"/>
+            <circle cx="60" cy="80" r="18" fill="#f0b5c8" opacity="0.4"/>
+            <circle cx="60" cy="80" r="25" fill="#f5c9d6" opacity="0.35"/>
+            <circle cx="60" cy="80" r="32" fill="#fad8e3" opacity="0.25"/>
+            
+            <!-- Rose petals -->
+            <ellipse cx="60" cy="65" rx="16" ry="22" fill="#f0a8c0" opacity="0.5"/>
+            <ellipse cx="60" cy="95" rx="16" ry="22" fill="#f5b8cc" opacity="0.5"/>
+            <ellipse cx="45" cy="80" rx="22" ry="16" fill="#f7c4d6" opacity="0.5"/>
+            <ellipse cx="75" cy="80" rx="22" ry="16" fill="#f9d0e0" opacity="0.5"/>
+            
+            <!-- Inner rose -->
+            <circle cx="60" cy="80" r="10" fill="#d88fa8" opacity="0.7"/>
+            <circle cx="60" cy="80" r="6" fill="#c97894" opacity="0.8"/>
         </svg>
 
-        <!-- SEQUENCE 2: Crown Rose - Blooms SECOND (1.5s - 2.5s) -->
-        <svg class="crown-rose" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <!-- Vines extending down -->
-            <path d="M 50 50 Q 30 70, 20 90" stroke="#90a955" stroke-width="2" fill="none" opacity="0.5"/>
-            <path d="M 50 50 Q 70 70, 80 90" stroke="#90a955" stroke-width="2" fill="none" opacity="0.5"/>
-            <!-- Leaves -->
-            <ellipse cx="35" cy="70" rx="6" ry="9" fill="#90a955" opacity="0.4" transform="rotate(30 35 70)"/>
-            <ellipse cx="65" cy="70" rx="6" ry="9" fill="#90a955" opacity="0.4" transform="rotate(-30 65 70)"/>
-            <!-- Rose -->
-            <circle cx="50" cy="50" r="8" fill="#ff1493" opacity="0.95"/>
-            <circle cx="50" cy="50" r="15" fill="#ff69b4" opacity="0.8"/>
-            <circle cx="50" cy="50" r="22" fill="#ffc0cb" opacity="0.6"/>
-            <circle cx="50" cy="50" r="30" fill="#ffc0cb" opacity="0.4"/>
-            <ellipse cx="50" cy="35" rx="12" ry="18" fill="#ff69b4" opacity="0.7"/>
-            <ellipse cx="50" cy="65" rx="12" ry="18" fill="#ff69b4" opacity="0.7"/>
-            <ellipse cx="35" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.7"/>
-            <ellipse cx="65" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.7"/>
+        <!-- SEQUENCE 2: Crown Rose with Decorative Scrollwork - Blooms SECOND (1.5s - 2.5s) -->
+        <svg class="crown-rose" viewBox="0 0 450 100" xmlns="http://www.w3.org/2000/svg">
+            <!-- Left decorative scroll -->
+            <path d="M 50 50 Q 80 30, 110 40 Q 120 45, 130 50" stroke="#7a9b76" stroke-width="2.5" fill="none" opacity="0.7" stroke-linecap="round"/>
+            <path d="M 55 55 C 75 40, 95 42, 115 50" stroke="#8fae8d" stroke-width="2" fill="none" opacity="0.6"/>
+            <circle cx="60" cy="48" r="4" fill="#8fae8d" opacity="0.5"/>
+            <circle cx="80" cy="42" r="3" fill="#a4c2a2" opacity="0.5"/>
+            
+            <!-- Right decorative scroll -->
+            <path d="M 400 50 Q 370 30, 340 40 Q 330 45, 320 50" stroke="#7a9b76" stroke-width="2.5" fill="none" opacity="0.7" stroke-linecap="round"/>
+            <path d="M 395 55 C 375 40, 355 42, 335 50" stroke="#8fae8d" stroke-width="2" fill="none" opacity="0.6"/>
+            <circle cx="390" cy="48" r="4" fill="#8fae8d" opacity="0.5"/>
+            <circle cx="370" cy="42" r="3" fill="#a4c2a2" opacity="0.5"/>
+            
+            <!-- Center watercolor rose (larger) -->
+            <circle cx="225" cy="50" r="15" fill="#e6a2b8" opacity="0.35"/>
+            <circle cx="225" cy="50" r="22" fill="#f0b5c8" opacity="0.45"/>
+            <circle cx="225" cy="50" r="28" fill="#f5c9d6" opacity="0.4"/>
+            <circle cx="225" cy="50" r="35" fill="#fad8e3" opacity="0.3"/>
+            
+            <!-- Rose petals -->
+            <ellipse cx="225" cy="32" rx="18" ry="26" fill="#f0a8c0" opacity="0.55"/>
+            <ellipse cx="225" cy="68" rx="18" ry="26" fill="#f5b8cc" opacity="0.55"/>
+            <ellipse cx="207" cy="50" rx="26" ry="18" fill="#f7c4d6" opacity="0.55"/>
+            <ellipse cx="243" cy="50" rx="26" ry="18" fill="#f9d0e0" opacity="0.55"/>
+            
+            <!-- Diagonal petals -->
+            <ellipse cx="210" cy="35" rx="20" ry="15" fill="#f2b0c4" opacity="0.5" transform="rotate(-45 210 35)"/>
+            <ellipse cx="240" cy="35" rx="20" ry="15" fill="#f2b0c4" opacity="0.5" transform="rotate(45 240 35)"/>
+            <ellipse cx="210" cy="65" rx="20" ry="15" fill="#f5c0d2" opacity="0.5" transform="rotate(45 210 65)"/>
+            <ellipse cx="240" cy="65" rx="20" ry="15" fill="#f5c0d2" opacity="0.5" transform="rotate(-45 240 65)"/>
+            
+            <!-- Inner rose -->
+            <circle cx="225" cy="50" r="12" fill="#d88fa8" opacity="0.75"/>
+            <circle cx="225" cy="50" r="8" fill="#c97894" opacity="0.85"/>
+            <circle cx="225" cy="50" r="4" fill="#b86680" opacity="0.9"/>
+            
+            <!-- Vine extending down -->
+            <path d="M 225 85 Q 215 100, 210 115" stroke="#8fae8d" stroke-width="1.5" fill="none" opacity="0.5"/>
+            <path d="M 225 85 Q 235 100, 240 115" stroke="#8fae8d" stroke-width="1.5" fill="none" opacity="0.5"/>
+            <ellipse cx="218" cy="95" rx="5" ry="8" fill="#a4c2a2" opacity="0.4" transform="rotate(25 218 95)"/>
+            <ellipse cx="232" cy="95" rx="5" ry="8" fill="#a4c2a2" opacity="0.4" transform="rotate(-25 232 95)"/>
         </svg>
 
         <!-- SEQUENCE 3: Accent Roses - Bloom THIRD (2.7s - 3.7s) -->
         <svg class="accent-rose accent-rose-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="8" fill="#ff69b4" opacity="0.9"/>
-            <circle cx="50" cy="50" r="15" fill="#ff69b4" opacity="0.7"/>
-            <circle cx="50" cy="50" r="22" fill="#ffc0cb" opacity="0.5"/>
-            <ellipse cx="50" cy="35" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
-            <ellipse cx="50" cy="65" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
-            <ellipse cx="35" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
-            <ellipse cx="65" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
+            <circle cx="50" cy="50" r="10" fill="#e6a2b8" opacity="0.3"/>
+            <circle cx="50" cy="50" r="15" fill="#f0b5c8" opacity="0.4"/>
+            <circle cx="50" cy="50" r="20" fill="#f5c9d6" opacity="0.35"/>
+            <ellipse cx="50" cy="38" rx="13" ry="18" fill="#f0a8c0" opacity="0.5"/>
+            <ellipse cx="50" cy="62" rx="13" ry="18" fill="#f5b8cc" opacity="0.5"/>
+            <ellipse cx="38" cy="50" rx="18" ry="13" fill="#f7c4d6" opacity="0.5"/>
+            <ellipse cx="62" cy="50" rx="18" ry="13" fill="#f9d0e0" opacity="0.5"/>
+            <circle cx="50" cy="50" r="8" fill="#d88fa8" opacity="0.7"/>
+            <circle cx="50" cy="50" r="5" fill="#c97894" opacity="0.8"/>
         </svg>
 
         <svg class="accent-rose accent-rose-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="8" fill="#ff69b4" opacity="0.9"/>
-            <circle cx="50" cy="50" r="15" fill="#ff69b4" opacity="0.7"/>
-            <circle cx="50" cy="50" r="22" fill="#ffc0cb" opacity="0.5"/>
-            <ellipse cx="50" cy="35" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
-            <ellipse cx="50" cy="65" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
-            <ellipse cx="35" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
-            <ellipse cx="65" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
+            <circle cx="50" cy="50" r="10" fill="#e6a2b8" opacity="0.3"/>
+            <circle cx="50" cy="50" r="15" fill="#f0b5c8" opacity="0.4"/>
+            <circle cx="50" cy="50" r="20" fill="#f5c9d6" opacity="0.35"/>
+            <ellipse cx="50" cy="38" rx="13" ry="18" fill="#f0a8c0" opacity="0.5"/>
+            <ellipse cx="50" cy="62" rx="13" ry="18" fill="#f5b8cc" opacity="0.5"/>
+            <ellipse cx="38" cy="50" rx="18" ry="13" fill="#f7c4d6" opacity="0.5"/>
+            <ellipse cx="62" cy="50" rx="18" ry="13" fill="#f9d0e0" opacity="0.5"/>
+            <circle cx="50" cy="50" r="8" fill="#d88fa8" opacity="0.7"/>
+            <circle cx="50" cy="50" r="5" fill="#c97894" opacity="0.8"/>
         </svg>
 
         <svg class="accent-rose accent-rose-3" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="8" fill="#ff69b4" opacity="0.9"/>
-            <circle cx="50" cy="50" r="15" fill="#ff69b4" opacity="0.7"/>
-            <circle cx="50" cy="50" r="22" fill="#ffc0cb" opacity="0.5"/>
-            <ellipse cx="50" cy="35" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
-            <ellipse cx="50" cy="65" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
-            <ellipse cx="35" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
-            <ellipse cx="65" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
+            <circle cx="50" cy="50" r="10" fill="#e6a2b8" opacity="0.3"/>
+            <circle cx="50" cy="50" r="15" fill="#f0b5c8" opacity="0.4"/>
+            <circle cx="50" cy="50" r="20" fill="#f5c9d6" opacity="0.35"/>
+            <ellipse cx="50" cy="38" rx="13" ry="18" fill="#f0a8c0" opacity="0.5"/>
+            <ellipse cx="50" cy="62" rx="13" ry="18" fill="#f5b8cc" opacity="0.5"/>
+            <ellipse cx="38" cy="50" rx="18" ry="13" fill="#f7c4d6" opacity="0.5"/>
+            <ellipse cx="62" cy="50" rx="18" ry="13" fill="#f9d0e0" opacity="0.5"/>
+            <circle cx="50" cy="50" r="8" fill="#d88fa8" opacity="0.7"/>
+            <circle cx="50" cy="50" r="5" fill="#c97894" opacity="0.8"/>
         </svg>
 
         <svg class="accent-rose accent-rose-4" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="8" fill="#ff69b4" opacity="0.9"/>
-            <circle cx="50" cy="50" r="15" fill="#ff69b4" opacity="0.7"/>
-            <circle cx="50" cy="50" r="22" fill="#ffc0cb" opacity="0.5"/>
-            <ellipse cx="50" cy="35" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
-            <ellipse cx="50" cy="65" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
-            <ellipse cx="35" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
-            <ellipse cx="65" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
+            <circle cx="50" cy="50" r="10" fill="#e6a2b8" opacity="0.3"/>
+            <circle cx="50" cy="50" r="15" fill="#f0b5c8" opacity="0.4"/>
+            <circle cx="50" cy="50" r="20" fill="#f5c9d6" opacity="0.35"/>
+            <ellipse cx="50" cy="38" rx="13" ry="18" fill="#f0a8c0" opacity="0.5"/>
+            <ellipse cx="50" cy="62" rx="13" ry="18" fill="#f5b8cc" opacity="0.5"/>
+            <ellipse cx="38" cy="50" rx="18" ry="13" fill="#f7c4d6" opacity="0.5"/>
+            <ellipse cx="62" cy="50" rx="18" ry="13" fill="#f9d0e0" opacity="0.5"/>
+            <circle cx="50" cy="50" r="8" fill="#d88fa8" opacity="0.7"/>
+            <circle cx="50" cy="50" r="5" fill="#c97894" opacity="0.8"/>
         </svg>
 
         <svg class="accent-rose accent-rose-5" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="8" fill="#ff69b4" opacity="0.9"/>
-            <circle cx="50" cy="50" r="15" fill="#ff69b4" opacity="0.7"/>
-            <circle cx="50" cy="50" r="22" fill="#ffc0cb" opacity="0.5"/>
-            <ellipse cx="50" cy="35" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
-            <ellipse cx="50" cy="65" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
-            <ellipse cx="35" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
-            <ellipse cx="65" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
+            <circle cx="50" cy="50" r="10" fill="#e6a2b8" opacity="0.3"/>
+            <circle cx="50" cy="50" r="15" fill="#f0b5c8" opacity="0.4"/>
+            <circle cx="50" cy="50" r="20" fill="#f5c9d6" opacity="0.35"/>
+            <ellipse cx="50" cy="38" rx="13" ry="18" fill="#f0a8c0" opacity="0.5"/>
+            <ellipse cx="50" cy="62" rx="13" ry="18" fill="#f5b8cc" opacity="0.5"/>
+            <ellipse cx="38" cy="50" rx="18" ry="13" fill="#f7c4d6" opacity="0.5"/>
+            <ellipse cx="62" cy="50" rx="18" ry="13" fill="#f9d0e0" opacity="0.5"/>
+            <circle cx="50" cy="50" r="8" fill="#d88fa8" opacity="0.7"/>
+            <circle cx="50" cy="50" r="5" fill="#c97894" opacity="0.8"/>
         </svg>
 
         <svg class="accent-rose accent-rose-6" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="8" fill="#ff69b4" opacity="0.9"/>
-            <circle cx="50" cy="50" r="15" fill="#ff69b4" opacity="0.7"/>
-            <circle cx="50" cy="50" r="22" fill="#ffc0cb" opacity="0.5"/>
-            <ellipse cx="50" cy="35" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
-            <ellipse cx="50" cy="65" rx="12" ry="18" fill="#ff69b4" opacity="0.6"/>
-            <ellipse cx="35" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
-            <ellipse cx="65" cy="50" rx="18" ry="12" fill="#ffc0cb" opacity="0.6"/>
+            <circle cx="50" cy="50" r="10" fill="#e6a2b8" opacity="0.3"/>
+            <circle cx="50" cy="50" r="15" fill="#f0b5c8" opacity="0.4"/>
+            <circle cx="50" cy="50" r="20" fill="#f5c9d6" opacity="0.35"/>
+            <ellipse cx="50" cy="38" rx="13" ry="18" fill="#f0a8c0" opacity="0.5"/>
+            <ellipse cx="50" cy="62" rx="13" ry="18" fill="#f5b8cc" opacity="0.5"/>
+            <ellipse cx="38" cy="50" rx="18" ry="13" fill="#f7c4d6" opacity="0.5"/>
+            <ellipse cx="62" cy="50" rx="18" ry="13" fill="#f9d0e0" opacity="0.5"/>
+            <circle cx="50" cy="50" r="8" fill="#d88fa8" opacity="0.7"/>
+            <circle cx="50" cy="50" r="5" fill="#c97894" opacity="0.8"/>
         </svg>
 
         <!-- SEQUENCE 4: Floating Petals - Fall LAST (4.2s onwards) -->
