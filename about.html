@@ -194,6 +194,25 @@
             .mv-box p { text-align: center; }
             .mv-box h3 { justify-content: center; }
         }
+        /* Updated Typography for About Content */
+
+    .about-content p {
+        font-size: 1.1rem; /* Slightly larger base for mobile/tablet */
+        color: var(--text-light);
+        margin-bottom: 1.5rem;
+        line-height: 1.8;
+    }
+
+    /* Specific adjustment for your laptop/large screens */
+    @media (min-width: 1200px) {
+        .about-content p {
+            font-size: 1.25rem; /* Noticeably larger on big screens */
+        }
+        
+        .about-content h2 {
+            font-size: 3.5rem; /* Keeps the header proportional to the larger text */
+        }
+    }
     </style>
 </head>
 <body>
@@ -222,7 +241,7 @@
         <p>Rice and Vows is a premier catering and event management service based in Quezon City, dedicated to elevating the wedding experience through culinary excellence and seamless execution. We bridge the gap between traditional Filipino hospitality and contemporary event design.</p>
         <div class="divider"></div>
         <h3>Our History</h3>
-        <p>Founded in 2024, Rice and Vows began as a boutique catering team with a passion for storytelling through food. We set out to create a service that prioritizes peace of mind alongside gourmet flavors, transforming the complexities of wedding planning into a curated journey of excellence.</p>
+        <p>Founded in 2026, Rice and Vows began as a boutique catering team with a passion for storytelling through food. We set out to create a service that prioritizes peace of mind alongside gourmet flavors, transforming the complexities of wedding planning into a curated journey of excellence.</p>
     </section>
 
     <!-- Mission & Vision Section -->
