@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Catering Services - Your Dream Wedding Awaits</title>
+    <title>Rice and Vows - Wedding Catering Services</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,10 +77,14 @@
             font-weight: 700;
             color: var(--text-dark);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .logo span {
-            color: var(--accent-gold);
+        .logo-img {
+            height: 50px;
+            width: auto;
         }
 
         .nav-links {
@@ -403,6 +407,49 @@
             }
         }
 
+        /* Video Section */
+        .video-section {
+            padding: 6rem 2rem;
+            background: var(--white);
+            text-align: center;
+        }
+
+        .video-container-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .video-container-wrapper h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .video-container-wrapper p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         /* About Section */
         .about-section {
             padding: 6rem 2rem;
@@ -641,7 +688,8 @@
 
             .about-content h2,
             .why-choose h2,
-            .cta-section h2 {
+            .cta-section h2,
+            .video-container-wrapper h2 {
                 font-size: 2.2rem;
             }
 
@@ -664,6 +712,10 @@
                 width: 45px !important;
                 height: 45px !important;
             }
+
+            .logo-img {
+                height: 40px;
+            }
         }
     </style>
 </head>
@@ -671,7 +723,9 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">Wedding<span>Feast</span></a>
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Rice and Vows" class="logo-img">
+            </a>
             
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html" class="active">Home</a></li>
@@ -948,12 +1002,26 @@
         </div>
     </section>
 
+    <!-- Promotional Video Section -->
+    <section class="video-section">
+        <div class="video-container-wrapper">
+            <h2>See Us in Action</h2>
+            <p>Experience the magic of Rice and Vows through our carefully crafted culinary presentations and memorable celebrations.</p>
+            <div class="video-container">
+                <video controls poster="video-thumbnail.jpg">
+                    <source src="CSCI_130_Video_Promotion.mov" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
     <!-- About Section -->
     <section class="about-section">
         <div class="about-container">
             <div class="about-content">
                 <h2>Experience-Driven Excellence</h2>
-                <p>We go beyond simply serving food. At WeddingFeast, we recognize that food plays a central role in every celebration, which is where we built our identity on.</p>
+                <p>We go beyond simply serving food. At Rice and Vows, we recognize that food plays a central role in every celebration, which is where we built our identity on.</p>
                 <p>From menu planning to presentation and service, every detail contributes to a refined and cohesive event experience. We ensure that your wedding catering is not just a necessity, but an element that contributes to your most significant memories.</p>
                 <a href="about.html" class="btn-primary">Learn More About Us</a>
             </div>
@@ -966,7 +1034,7 @@
     <!-- Why Choose Us Section -->
     <section class="why-choose">
         <div class="why-choose-container">
-            <h2>Why Choose WeddingFeast</h2>
+            <h2>Why Choose Rice and Vows</h2>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -1030,7 +1098,7 @@
     <footer>
         <div class="footer-container">
             <div class="footer-section">
-                <h3>Wedding<span style="color: var(--accent-gold);">Feast</span></h3>
+                <h3>Rice and Vows</h3>
                 <p>Creating unforgettable culinary experiences for your special day. Every detail crafted with love and elegance.</p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -1058,13 +1126,13 @@
 
             <div class="footer-section">
                 <h3>Contact Us</h3>
-                <p><i class="fas fa-phone"></i> +65 1234 5678</p>
-                <p><i class="fas fa-envelope"></i> hello@weddingfeast.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> Singapore</p>
+                <p><i class="fas fa-phone"></i> +63 912 345 6789</p>
+                <p><i class="fas fa-envelope"></i> hello@riceandvows.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Quezon City, Philippines</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 WeddingFeast. All rights reserved. | Designed with ♥ for your special day</p>
+            <p>&copy; 2024 Rice and Vows. All rights reserved. | Designed with ♥ for your special day</p>
         </div>
     </footer>
 
